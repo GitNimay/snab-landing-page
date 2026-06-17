@@ -878,6 +878,7 @@ h1 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   border-top: 1px solid #252525;
   border-bottom: 1px solid #232323;
+  overflow: hidden;
 }
 
 .metric-card {
@@ -888,16 +889,17 @@ h1 {
   justify-content: center;
   border-right: 1px solid #202020;
   padding: 10px 27px 0;
+  overflow: hidden;
 }
 
 .metric-card:first-child {
-  padding-left: max(27px, calc((100vw - 1360px) / 2 + 28px));
+  padding-left: clamp(27px, calc((100vw - 1360px) / 2 + 28px), 8vw);
 }
 
 .metric-card:last-child {
   align-items: flex-end;
   border-right: 0;
-  padding-right: max(27px, calc((100vw - 1360px) / 2 + 28px));
+  padding-right: clamp(27px, calc((100vw - 1360px) / 2 + 28px), 8vw);
   text-align: right;
 }
 
@@ -932,6 +934,7 @@ h1 {
   font-weight: 400;
   letter-spacing: 0;
   line-height: 1;
+  white-space: nowrap;
   -webkit-font-smoothing: none;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.45);
 }
@@ -942,6 +945,7 @@ h1 {
   font-size: 17px;
   font-weight: 650;
   line-height: 1.2;
+  white-space: nowrap;
 }
 
 .ai-system-section {
