@@ -58,9 +58,10 @@ export default function AboutPage() {
         </header>
 
         <section className="about-opening" aria-labelledby="about-title">
-          <div
+          <img
             className="about-blank about-opening-visual"
-            aria-label="Opening image placeholder"
+            alt="Opening image placeholder"
+            src="/about_hero.png"
           />
 
           <div className="about-opening-copy">
@@ -107,9 +108,10 @@ export default function AboutPage() {
             <span aria-hidden="true">01</span>
           </div>
 
-          <div
+          <img
             className="about-blank about-chapter-one-visual"
-            aria-label="Team image placeholder"
+            alt="Team image placeholder"
+            src="/about_team.png"
           />
 
           <div className="about-grid-copy">
@@ -170,13 +172,15 @@ export default function AboutPage() {
                 AI layer.
               </p>
             </div>
-            <div
+            <img
               className="about-blank"
-              aria-label="Product process image placeholder"
+              alt="Product process image placeholder"
+              src="/about_process.png"
             />
-            <div
+            <img
               className="about-blank"
-              aria-label="Team portrait image placeholder"
+              alt="Team portrait image placeholder"
+              src="/about_portrait.png"
             />
             <div className="about-favorite-rail" aria-hidden="true">
               BUILD
