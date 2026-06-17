@@ -3,6 +3,7 @@ import { StaggerTestimonials } from "@/components/ui/stagger-testimonials";
 import { FAQSection } from "./FAQSection";
 import { Footer } from "./Footer";
 import { HomeMotion } from "./HomeMotion";
+import Image from "next/image";
 
 const navItems = [
   { label: "home page", href: "#home" },
@@ -156,10 +157,7 @@ export default function Home() {
       <HomeMotion />
       <header className="topbar" aria-label="Primary navigation">
         <a className="brand" href="#" aria-label="Snab Infotech home">
-          <span className="brand-mark" aria-hidden="true">
-            <span />
-          </span>
-          <span className="brand-name">Snab Infotech</span>
+          <Image src="/logo.png" alt="Snab Infotech" width={120} height={40} priority style={{ objectFit: "contain" }} />
         </a>
 
         <MobileMenu items={navItems} />
