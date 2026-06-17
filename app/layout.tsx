@@ -22,7 +22,12 @@ const displayFont = Pixelify_Sans({
 export const metadata: Metadata = {
   title: "Snab Infotech",
   description:
-    "AI-enabled product development, app development, website development, desktop software, and agent workflow consulting."
+    "AI-enabled product development, app development, website development, desktop software, and agent workflow consulting.",
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
