@@ -80,8 +80,8 @@ export default function ContactPage() {
               <br />
               and consulting enquiries
             </p>
-            <a href="mailto:hello@snab.ai">
-              hello@snab.ai <ArrowUpRight size={16} aria-hidden="true" />
+            <a href="mailto:info.snabinnovations@gmail.com">
+              info.snabinnovations@gmail.com <ArrowUpRight size={16} aria-hidden="true" />
             </a>
           </article>
 

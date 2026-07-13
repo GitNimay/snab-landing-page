@@ -38,6 +38,10 @@
 }
 
 .about-sheet-header {
+  position: sticky;
+  top: var(--nav-height);
+  z-index: 70;
+  background: #050505;
   display: grid;
   min-height: 52px;
   grid-template-columns: 58px repeat(6, minmax(0, 1fr));

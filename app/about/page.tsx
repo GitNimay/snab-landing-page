@@ -50,11 +50,11 @@ export default function AboutPage() {
               <span />
             </span>
           </a>
-          <span>ABOUT US</span>
-          <span>OUR APPROACH</span>
-          <span>WHAT WE BUILD</span>
-          <span>AI PRODUCT STUDIO</span>
-          <span>SNAB Innovations</span>
+          <a href="#about-title">ABOUT US</a>
+          <a href="#chapter-two-title">OUR APPROACH</a>
+          <a href="#chapter-one-title">WHAT WE BUILD</a>
+          <a href="/#projects">AI PRODUCT STUDIO</a>
+          <a href="/">SNAB Innovations</a>
           <a href="/contact">CONTACT</a>
         </header>
 
