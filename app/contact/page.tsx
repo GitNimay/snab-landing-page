@@ -11,6 +11,7 @@ const navItems = [
   { label: "projects", href: "/#projects" },
   { label: "services", href: "/#services" },
   { label: "contact us", href: "/contact" },
+  { label: "careers", href: "/careers" }
 ];
 
 export const metadata: Metadata = {

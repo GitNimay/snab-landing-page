@@ -314,15 +314,13 @@ a {
   z-index: 1;
   top: 0;
   right: 0;
-  width: 50vw;
-  min-width: 560px;
+  width: 100%;
+  max-width: 380px;
   height: 100dvh;
   overflow-x: hidden;
   overflow-y: auto;
   overscroll-behavior: contain;
-  border-left: 2px solid #050505;
-  background: var(--orange-hot);
-  box-shadow: -30px 0 80px rgba(0, 0, 0, 0.35);
+  background: transparent;
   color: #050505;
   transform: translateX(100%);
   transition: transform 640ms cubic-bezier(0.22, 1, 0.36, 1);
@@ -339,6 +337,8 @@ a {
   align-items: center;
   justify-content: space-between;
   border-bottom: 2px solid #050505;
+  border-left: 2px solid #050505;
+  background: var(--orange-hot);
   padding: 0 clamp(22px, 3.6vw, 56px);
 }
 
@@ -359,16 +359,20 @@ a {
   display: grid;
   padding: clamp(38px, 6.5vw, 86px) 0 0;
   border-top: 2px solid #050505;
+  border-left: 2px solid #050505;
+  border-bottom: 2px solid #050505;
+  background: var(--orange-hot);
+  box-shadow: -30px 0 80px rgba(0, 0, 0, 0.35);
 }
 
 .mobile-menu-links a {
   display: flex;
-  min-height: clamp(82px, 11vh, 124px);
+  min-height: 68px;
   align-items: center;
   border-bottom: 2px solid #050505;
   color: #050505;
   font-family: var(--font-display), "Courier New", monospace;
-  font-size: clamp(38px, 4.6vw, 78px);
+  font-size: 28px;
   font-weight: 400;
   line-height: 1;
   padding: 0 clamp(22px, 3.6vw, 56px);
@@ -412,7 +416,7 @@ a {
 .mobile-menu-links a:hover,
 .mobile-menu-links a:focus-visible {
   background: rgba(5, 5, 5, 0.08);
-  padding-left: clamp(30px, 4.3vw, 70px);
+  padding-left: clamp(28px, 4.3vw, 64px);
   outline: none;
 }
 
@@ -1826,10 +1830,7 @@ h1 {
     gap: 5px;
   }
 
-  .mobile-menu-panel {
-    width: min(86vw, 410px);
-    min-width: 0;
-  }
+
 
   .brand {
     order: 1;
@@ -2190,9 +2191,7 @@ h1 {
     font-size: 14px;
   }
 
-  .mobile-menu-panel {
-    width: min(88vw, 330px);
-  }
+
 
   .mobile-menu-head {
     padding-inline: 14px;
@@ -2514,10 +2513,7 @@ h1 {
     font-size: 13px;
   }
 
-  .mobile-menu-links a {
-    min-height: 78px;
-    font-size: 34px;
-  }
+
 
   .pixel-tree {
     right: -86vw;

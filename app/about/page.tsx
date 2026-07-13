@@ -9,7 +9,8 @@ const navItems = [
   { label: "about us", href: "/about" },
   { label: "projects", href: "/#projects" },
   { label: "services", href: "/#services" },
-  { label: "contact us", href: "/contact" }
+  { label: "contact us", href: "/contact" },
+  { label: "careers", href: "/careers" }
 ];
 
 export const metadata: Metadata = {
