@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useForm, ValidationError } from "@formspree/react";
 import { Send } from "lucide-react";
 
 export function ContactForm() {
@@ -9,30 +10,20 @@ export function ContactForm() {
     email: "",
     message: "",
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [state, handleSubmit] = useForm("mrengaww");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus("idle");
-
-    try {
-      // Simulate form submission
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      setSubmitStatus("success");
-      setFormData({ name: "", email: "", message: "" });
-    } catch {
-      setSubmitStatus("error");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+  if (state.succeeded) {
+    return (
+      <p className="contact-form-status success" role="status">
+        Message sent successfully! We&apos;ll get back to you soon.
+      </p>
+    );
+  }
 
   return (
     <form className="contact-form" onSubmit={handleSubmit}>
@@ -47,6 +38,7 @@ export function ContactForm() {
           placeholder="Your name"
           required
         />
+        <ValidationError prefix="Name" field="name" errors={state.errors} />
       </div>
 
       <div className="contact-form-group">
@@ -60,6 +52,7 @@ export function ContactForm() {
           placeholder="your@email.com"
           required
         />
+        <ValidationError prefix="Email" field="email" errors={state.errors} />
       </div>
 
       <div className="contact-form-group">
@@ -73,23 +66,19 @@ export function ContactForm() {
           rows={2}
           required
         />
+        <ValidationError prefix="Message" field="message" errors={state.errors} />
       </div>
 
       <button
         type="submit"
         className="contact-form-submit"
-        disabled={isSubmitting}
+        disabled={state.submitting}
       >
-        {isSubmitting ? "Sending..." : "Send Message"}
+        {state.submitting ? "Sending..." : "Send Message"}
         <Send size={16} aria-hidden="true" />
       </button>
 
-      {submitStatus === "success" && (
-        <p className="contact-form-status success">
-          Message sent successfully! We&apos;ll get back to you soon.
-        </p>
-      )}
-      {submitStatus === "error" && (
+      {state.errors && (
         <p className="contact-form-status error">
           Something went wrong. Please try again or email us directly.
         </p>
