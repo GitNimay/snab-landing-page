@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Footer } from "../Footer";
 import { MobileMenu } from "../MobileMenu";
+import { AboutMotion } from "./AboutMotion";
 import "./about.css";
 
 const navItems = [
@@ -20,6 +21,12 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <main className="about-page">
+      <AboutMotion />
+      
+      <div className="about-watermark" aria-hidden="true">
+        SNAB
+      </div>
+
       <header className="topbar" aria-label="Primary navigation">
         <a className="brand" href="/" aria-label="SNAB Innovations home">
           <span className="brand-mark" aria-hidden="true">
@@ -51,11 +58,7 @@ export default function AboutPage() {
         </header>
 
         <section className="about-opening" aria-labelledby="about-title">
-          <img
-            className="about-blank about-opening-visual"
-            alt="Opening image placeholder"
-            src="/about_hero.png"
-          />
+
 
           <div className="about-opening-copy">
             <p className="about-label">SNAB Innovations</p>
@@ -101,11 +104,7 @@ export default function AboutPage() {
             <span aria-hidden="true">01</span>
           </div>
 
-          <img
-            className="about-blank about-chapter-one-visual"
-            alt="Team image placeholder"
-            src="/about_team.png"
-          />
+
 
           <div className="about-grid-copy">
             <h3>WHAT WE BUILD</h3>
@@ -165,16 +164,7 @@ export default function AboutPage() {
                 AI layer.
               </p>
             </div>
-            <img
-              className="about-blank"
-              alt="Product process image placeholder"
-              src="/about_process.png"
-            />
-            <img
-              className="about-blank"
-              alt="Team portrait image placeholder"
-              src="/about_portrait.png"
-            />
+
             <div className="about-favorite-rail" aria-hidden="true">
               BUILD
               <br />

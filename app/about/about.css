@@ -8,25 +8,28 @@
   padding-top: 112px;
 }
 
-.about-page-side {
-  position: absolute;
-  top: 28px;
-  z-index: 2;
-  color: #8d8d88;
-  font-size: 9px;
-  font-weight: 800;
-  line-height: 1.05;
-}
-
-.about-page-side-left {
-  left: 16px;
-}
-
-.about-page-side-right {
-  right: 18px;
+.about-watermark {
+  position: fixed;
+  top: 0;
+  right: -5vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  font-size: 40vh;
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(255, 90, 22, 0.07);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  pointer-events: none;
+  z-index: 0;
+  letter-spacing: -0.05em;
+  font-family: var(--font-body), "Segoe UI", sans-serif;
 }
 
 .about-sheet {
+  position: relative;
+  z-index: 1;
   width: min(calc(100% - 12vw), 1180px);
   margin: 0 auto 108px;
   border: 1px solid var(--about-line);
@@ -76,8 +79,8 @@
 
 .about-opening {
   display: grid;
-  grid-template-columns: 43% 28.5% 28.5%;
-  grid-template-rows: 410px 170px;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: auto 170px;
 }
 
 .about-blank {
@@ -90,15 +93,12 @@
   display: block;
 }
 
-.about-opening-visual {
-  grid-row: 1 / 3;
-  border-right: 1px solid var(--about-line);
-}
+
 
 .about-opening-copy {
   position: relative;
   display: flex;
-  grid-column: 2 / 4;
+  grid-column: 1 / 3;
   flex-direction: column;
   justify-content: center;
   border-bottom: 1px solid var(--about-line);
@@ -201,14 +201,14 @@
 
 .about-chapter-one {
   display: grid;
-  grid-template-columns: 43% 27% 30%;
+  grid-template-columns: 50% 50%;
   grid-template-rows: 260px 230px 120px;
   border-top: 1px solid var(--about-line);
 }
 
 .about-chapter-title {
   position: relative;
-  grid-column: 1 / 4;
+  grid-column: 1 / 3;
   display: grid;
   grid-template-columns: 1fr 0.42fr 0.72fr;
   align-items: center;
@@ -251,10 +251,7 @@
   text-align: right;
 }
 
-.about-chapter-one-visual {
-  grid-row: 2 / 4;
-  border-right: 1px solid var(--about-line);
-}
+
 
 .about-grid-copy,
 .about-grid-heading {
@@ -267,13 +264,13 @@
   padding: 24px 28px;
 }
 
-.about-chapter-one > :nth-child(4),
-.about-chapter-one > :nth-child(6) {
+.about-chapter-one > :nth-child(3),
+.about-chapter-one > :nth-child(5) {
   border-right: 0;
 }
 
-.about-chapter-one > :nth-child(5),
-.about-chapter-one > :nth-child(6) {
+.about-chapter-one > :nth-child(4),
+.about-chapter-one > :nth-child(5) {
   border-bottom: 0;
 }
 
@@ -386,7 +383,7 @@
 .about-approach-media {
   display: grid;
   min-height: 310px;
-  grid-template-columns: 34% 28% 28% 10%;
+  grid-template-columns: 85% 15%;
   border-top: 1px solid var(--about-line);
   border-bottom: 1px solid var(--about-line);
 }
@@ -524,8 +521,8 @@
   }
 
   .about-opening {
-    grid-template-columns: 1fr 0.5fr 0.5fr;
-    grid-template-rows: 330px 170px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 170px;
   }
 
   .about-opening-copy {
@@ -546,10 +543,7 @@
     display: none;
   }
 
-  .about-chapter-one-visual {
-    grid-row: 2 / 4;
-    border-bottom: 1px solid var(--about-line);
-  }
+
 
   .about-grid-copy,
   .about-grid-heading {
@@ -577,25 +571,12 @@
   }
 
   .about-approach-media {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 220px 220px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 220px;
   }
 
   .about-favorite-rail {
     display: none;
-  }
-
-  .about-approach-media > *:nth-child(2) {
-    border-right: 0;
-  }
-
-  .about-approach-media > *:nth-child(-n + 2) {
-    border-bottom: 1px solid var(--about-line);
-  }
-
-  .about-approach-media > *:nth-child(3) {
-    grid-column: 1 / 3;
-    border-right: 0;
   }
 }
 
@@ -619,15 +600,10 @@
 
   .about-opening {
     grid-template-columns: 1fr;
-    grid-template-rows: 270px auto 150px 118px;
+    grid-template-rows: auto 150px 118px;
   }
 
-  .about-opening-visual {
-    grid-column: 1;
-    grid-row: auto;
-    border-right: 0;
-    border-bottom: 1px solid var(--about-line);
-  }
+
 
   .about-opening-copy {
     grid-column: 1;
@@ -671,11 +647,7 @@
     opacity: 0.32;
   }
 
-  .about-chapter-one-visual {
-    min-height: 290px;
-    border-right: 0;
-    border-bottom: 1px solid var(--about-line);
-  }
+
 
   .about-grid-copy,
   .about-grid-heading {
@@ -683,7 +655,7 @@
     border-bottom: 1px solid var(--about-line);
   }
 
-  .about-chapter-one > :nth-child(6) {
+  .about-chapter-one > :nth-child(5) {
     border-bottom: 0;
   }
 
