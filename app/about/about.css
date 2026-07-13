@@ -30,9 +30,10 @@
 .about-sheet {
   position: relative;
   z-index: 1;
-  width: min(calc(100% - 12vw), 1180px);
-  margin: 0 auto 108px;
-  border: 1px solid var(--about-line);
+  width: 100%;
+  margin: 0;
+  border-top: 1px solid var(--about-line);
+  border-bottom: 1px solid var(--about-line);
   background: #050505;
 }
 
@@ -506,7 +507,6 @@
   }
 
   .about-sheet {
-    width: calc(100% - 32px);
     margin-bottom: 72px;
   }
 
@@ -586,7 +586,6 @@
   }
 
   .about-sheet {
-    width: calc(100% - 20px);
     margin-bottom: 54px;
   }
 
