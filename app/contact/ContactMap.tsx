@@ -38,7 +38,7 @@ export function ContactMap() {
           </span>
         </MarkerContent>
         <MarkerTooltip className="contact-map-tooltip">
-          Snab Infotech · Nashik
+          SNAB Innovations · Nashik
         </MarkerTooltip>
       </MapMarker>
 

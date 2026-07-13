@@ -14,9 +14,9 @@ const navItems = [
 ];
 
 export const metadata: Metadata = {
-  title: "Contact Us | Snab Infotech",
+  title: "Contact Us | SNAB Innovations",
   description:
-    "Contact Snab Infotech in Nashik to plan an AI product, workflow automation, website, app, or software project.",
+    "Contact SNAB Innovations in Nashik to plan an AI product, workflow automation, website, app, or software project.",
 };
 
 export default function ContactPage() {
@@ -26,11 +26,11 @@ export default function ContactPage() {
         className="topbar contact-topbar"
         aria-label="Primary navigation"
       >
-        <a className="brand" href="/#home" aria-label="Snab Infotech home">
+        <a className="brand" href="/#home" aria-label="SNAB Innovations home">
           <span className="brand-mark" aria-hidden="true">
             <span />
           </span>
-          <span className="brand-name">Snab Infotech</span>
+          <span className="brand-name">SNAB Innovations</span>
         </a>
 
         <MobileMenu items={navItems} />

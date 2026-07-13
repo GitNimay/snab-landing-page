@@ -13,7 +13,7 @@ const faqs = [
     answer: "We offer clear, project-based pricing following an initial roadmap phase. There are no hidden fees or agency premiums—we price based on complexity, number of agent integrations, and delivery timeline."
   },
   {
-    question: "Can Snabb AI help automate internal company workflows?",
+    question: "Can SNAB Innovations help automate internal company workflows?",
     answer: "Absolutely. We specialize in connecting documents, systems, legacy databases, and teams into secure, automated pipelines that handle data processing, approval routes, and reporting."
   },
   {

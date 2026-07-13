@@ -20,7 +20,7 @@ const displayFont = Pixelify_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Snab Infotech",
+  title: "SNAB Innovations",
   description:
     "AI-enabled product development, app development, website development, desktop software, and agent workflow consulting.",
   icons: {

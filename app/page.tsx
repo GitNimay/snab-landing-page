@@ -56,11 +56,11 @@ export default function Home() {
     <>
       <HomeMotion />
       <header className="topbar" aria-label="Primary navigation">
-        <a className="brand" href="#" aria-label="Snab Infotech home">
+        <a className="brand" href="#" aria-label="SNAB Innovations home">
           <span className="brand-mark" aria-hidden="true">
             <span />
           </span>
-          <span className="brand-name">Snab Infotech</span>
+          <span className="brand-name">SNAB Innovations</span>
         </a>
 
         <MobileMenu items={navItems} />
@@ -69,161 +69,161 @@ export default function Home() {
       <div id="smooth-wrapper">
         <div id="smooth-content">
           <main className="site-shell">
-      <section className="hero" id="home" aria-labelledby="hero-title">
-        <div className="grid-plane" aria-hidden="true" />
-        <div className="scanline" aria-hidden="true" />
+            <section className="hero" id="home" aria-labelledby="hero-title">
+              <div className="grid-plane" aria-hidden="true" />
+              <div className="scanline" aria-hidden="true" />
 
-        <div className="hero-copy">
-          <p className="eyebrow">
-            Your products are now AI-enabled.
-            <br />
-            Native agent workflows for teams, tools, and operations &rarr;
-          </p>
+              <div className="hero-copy">
+                <p className="eyebrow">
+                  Your products are now AI-enabled.
+                  <br />
+                  Native agent workflows for teams, tools, and operations &rarr;
+                </p>
 
-          <h1 id="hero-title">The AI Brain Behind Your Business</h1>
+                <h1 id="hero-title">The AI Brain Behind Your Business</h1>
 
-          <p className="lead">
-            AI-enabled apps, websites, desktop software, and workflow agents
-            built from scratch or upgraded from your existing product.
-          </p>
+                <p className="lead">
+                  AI-enabled apps, websites, desktop software, and workflow agents
+                  built from scratch or upgraded from your existing product.
+                </p>
 
-          <div className="cta-row">
-            <a className="btn btn-light btn-large" href="/contact">
-              Talk to us
-            </a>
-          </div>
-        </div>
+                <div className="cta-row">
+                  <a className="btn btn-light btn-large" href="/contact">
+                    Talk to us
+                  </a>
+                </div>
+              </div>
 
-        <img
-          className="pixel-tree"
-          src="/pixel-tree-wind.svg"
-          alt=""
-          aria-hidden="true"
-        />
+              <img
+                className="pixel-tree"
+                src="/pixel-tree-wind.svg"
+                alt=""
+                aria-hidden="true"
+              />
 
-        <div className="bottom-rail" aria-hidden="true" />
-      </section>
-
-
+              <div className="bottom-rail" aria-hidden="true" />
+            </section>
 
 
 
-      <section
-        className="projects-section"
-        id="projects"
-        aria-labelledby="projects-title"
-      >
-        <div className="projects-header">
-          <h2 id="projects-title">PROJECTS</h2>
-          <p className="projects-intro">
-            AI products for real-world professional workflows.
-          </p>
-        </div>
 
-        <div className="projects-panel">
-          {projects.map((project) => (
-            <a className="project-row" href="#" key={project.number}>
-              <span className="project-number">{project.number}</span>
 
-              <span className="project-name-wrap">
-                <span className="project-name">{project.name}</span>
-                <span className="project-row-underline" aria-hidden="true" />
-              </span>
+            <section
+              className="projects-section"
+              id="projects"
+              aria-labelledby="projects-title"
+            >
+              <div className="projects-header">
+                <h2 id="projects-title">PROJECTS</h2>
+                <p className="projects-intro">
+                  AI products for real-world professional workflows.
+                </p>
+              </div>
 
-              <span className="project-categories">
-                {project.categories.map((category) => (
-                  <span key={category}>{category}</span>
-                ))}
-              </span>
+              <div className="projects-panel">
+                {projects.map((project) => (
+                  <a className="project-row" href="#" key={project.number}>
+                    <span className="project-number">{project.number}</span>
 
-              <span className="project-summary">
-                <span className="project-description">
-                  {project.description}
-                </span>
-                <span className="project-capabilities">
-                  {project.capabilities.map((capability, index) => (
-                    <span key={capability}>
-                      {capability}
-                      {index < project.capabilities.length - 1 ? (
-                        <span aria-hidden="true"> &middot; </span>
-                      ) : null}
+                    <span className="project-name-wrap">
+                      <span className="project-name">{project.name}</span>
+                      <span className="project-row-underline" aria-hidden="true" />
                     </span>
-                  ))}
-                </span>
-                <span className="project-link">VIEW PROJECT &#8599;</span>
-              </span>
 
-              <span className="project-media-slot">
-                <img
-                  className="project-media-image"
-                  src={project.image}
-                  alt={project.imageAlt}
-                />
-              </span>
-            </a>
-          ))}
-        </div>
+                    <span className="project-categories">
+                      {project.categories.map((category) => (
+                        <span key={category}>{category}</span>
+                      ))}
+                    </span>
 
-        <div className="projects-footer">
-          <p>Have a workflow that should be more intelligent?</p>
-          <a href="/contact">BUILD WITH SNABB AI &#8599;</a>
-        </div>
+                    <span className="project-summary">
+                      <span className="project-description">
+                        {project.description}
+                      </span>
+                      <span className="project-capabilities">
+                        {project.capabilities.map((capability, index) => (
+                          <span key={capability}>
+                            {capability}
+                            {index < project.capabilities.length - 1 ? (
+                              <span aria-hidden="true"> &middot; </span>
+                            ) : null}
+                          </span>
+                        ))}
+                      </span>
+                      <span className="project-link">VIEW PROJECT &#8599;</span>
+                    </span>
 
-        <a className="projects-view-all" href="#">
-          View all projects
-        </a>
-        <div className="bottom-rail" aria-hidden="true" />
-      </section>
+                    <span className="project-media-slot">
+                      <img
+                        className="project-media-image"
+                        src={project.image}
+                        alt={project.imageAlt}
+                      />
+                    </span>
+                  </a>
+                ))}
+              </div>
 
-      <section
-        className="business-growth-section"
-        id="contact"
-        aria-labelledby="business-growth-title"
-      >
-        <video
-          className="growth-tree-video"
-          src="/tree-growing.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-        />
-        <div className="business-growth-copy">
-          <p className="business-growth-kicker">Growth systems for ambitious teams</p>
-          <h2 id="business-growth-title">
-            Build The Next Branch Of Your Business With Us.
-          </h2>
-          <blockquote>
-            &ldquo;Grow your business with AI products, automation, and software
-            services that turn one strong idea into many working systems.&rdquo;
-          </blockquote>
-          <a className="business-growth-link" href="/contact">
-            START A PROJECT &#8599;
-          </a>
-        </div>
-        <div className="bottom-rail" aria-hidden="true" />
-      </section>
+              <div className="projects-footer">
+                <p>Have a workflow that should be more intelligent?</p>
+                <a href="/contact">BUILD WITH SNAB Innovations &#8599;</a>
+              </div>
 
-      <section className="testimonials-section" aria-labelledby="testimonials-title">
-        <div className="testimonials-header">
-          <p className="testimonials-eyebrow">Client Feedback</p>
-          <h2 id="testimonials-title">
-            What Our Clients
-            <br />
-            Are Saying
-          </h2>
-          <p className="testimonials-intro">
-            Real feedback from teams who transformed their workflows with us.
-          </p>
-        </div>
-        <div className="testimonials-carousel">
-          <StaggerTestimonials />
-        </div>
-        <div className="bottom-rail" aria-hidden="true" />
-      </section>
+              <a className="projects-view-all" href="#">
+                View all projects
+              </a>
+              <div className="bottom-rail" aria-hidden="true" />
+            </section>
 
-      <FAQSection />
-      <Footer />
+            <section
+              className="business-growth-section"
+              id="contact"
+              aria-labelledby="business-growth-title"
+            >
+              <video
+                className="growth-tree-video"
+                src="/tree-growing.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+              />
+              <div className="business-growth-copy">
+                <p className="business-growth-kicker">Growth systems for ambitious teams</p>
+                <h2 id="business-growth-title">
+                  Build The Next Branch Of Your Business With Us.
+                </h2>
+                <blockquote>
+                  &ldquo;Grow your business with AI products, automation, and software
+                  services that turn one strong idea into many working systems.&rdquo;
+                </blockquote>
+                <a className="business-growth-link" href="/contact">
+                  START A PROJECT &#8599;
+                </a>
+              </div>
+              <div className="bottom-rail" aria-hidden="true" />
+            </section>
+
+            <section className="testimonials-section" aria-labelledby="testimonials-title">
+              <div className="testimonials-header">
+                <p className="testimonials-eyebrow">Client Feedback</p>
+                <h2 id="testimonials-title">
+                  What Our Clients
+                  <br />
+                  Are Saying
+                </h2>
+                <p className="testimonials-intro">
+                  Real feedback from teams who transformed their workflows with us.
+                </p>
+              </div>
+              <div className="testimonials-carousel">
+                <StaggerTestimonials />
+              </div>
+              <div className="bottom-rail" aria-hidden="true" />
+            </section>
+
+            <FAQSection />
+            <Footer />
           </main>
         </div>
       </div>

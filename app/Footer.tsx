@@ -1,6 +1,6 @@
 const footerColumns = [
   [
-    { label: "Why Snab", href: "/about" },
+    { label: "Why SNAB Innovations", href: "/about" },
     { label: "Services", href: "/#services" },
     { label: "Projects", href: "/#projects" },
     { label: "Use Cases", href: "/#services" },
@@ -29,12 +29,12 @@ export function Footer() {
       <div className="footer-frame">
         <div className="footer-left">
           <div className="footer-brand-block">
-            <a className="footer-brand" href="/#home" aria-label="Snab Infotech home">
+            <a className="footer-brand" href="/#home" aria-label="SNAB Innovations home">
               <span className="brand-mark footer-brand-mark" aria-hidden="true">
                 <span />
               </span>
               <span id="footer-brand" className="footer-brand-name">
-                Snab Infotech
+                SNAB Innovations
               </span>
             </a>
 
@@ -88,7 +88,7 @@ export function Footer() {
           </div>
 
           <div className="footer-copyright">
-            &copy; 2026 Snab Infotech
+            &copy; 2026 SNAB Innovations
           </div>
         </div>
       </div>

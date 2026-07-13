@@ -12,33 +12,26 @@ const navItems = [
 ];
 
 export const metadata: Metadata = {
-  title: "About Us | Snab Infotech",
+  title: "About Us | SNAB Innovations",
   description:
-    "Learn how Snab Infotech designs and builds AI products, intelligent software, and workflow automation."
+    "Learn how SNAB Innovations designs and builds AI products, intelligent software, and workflow automation."
 };
 
 export default function AboutPage() {
   return (
     <main className="about-page">
       <header className="topbar" aria-label="Primary navigation">
-        <a className="brand" href="/" aria-label="Snab Infotech home">
+        <a className="brand" href="/" aria-label="SNAB Innovations home">
           <span className="brand-mark" aria-hidden="true">
             <span />
           </span>
-          <span className="brand-name">Snab Infotech</span>
+          <span className="brand-name">SNAB Innovations</span>
         </a>
 
         <MobileMenu items={navItems} />
       </header>
 
-      <div className="about-page-side about-page-side-left" aria-hidden="true">
-        SNAB INFOTECH
-        <br />
-        ABOUT THE STUDIO
-      </div>
-      <div className="about-page-side about-page-side-right" aria-hidden="true">
-        01
-      </div>
+
 
       <article className="about-sheet">
         <header className="about-sheet-header">
@@ -53,7 +46,7 @@ export default function AboutPage() {
           <span>OUR APPROACH</span>
           <span>WHAT WE BUILD</span>
           <span>AI PRODUCT STUDIO</span>
-          <span>SNAB INFOTECH</span>
+          <span>SNAB Innovations</span>
           <a href="/contact">CONTACT</a>
         </header>
 
@@ -65,7 +58,7 @@ export default function AboutPage() {
           />
 
           <div className="about-opening-copy">
-            <p className="about-label">SNAB INFOTECH</p>
+            <p className="about-label">SNAB Innovations</p>
             <h1 id="about-title">
               Building
               <br />
@@ -81,7 +74,7 @@ export default function AboutPage() {
 
           <div className="about-opening-note">
             <p>
-              Snab Infotech works across product strategy, interface design,
+              SNAB Innovations works across product strategy, interface design,
               full-stack engineering, AI integration, deployment, and ongoing
               iteration.
             </p>
@@ -127,7 +120,7 @@ export default function AboutPage() {
           <div className="about-grid-heading">ABOUT THE WORK</div>
 
           <div className="about-grid-copy">
-            <h3>SNAB INFOTECH</h3>
+            <h3>SNAB Innovations</h3>
             <p>
               A compact engineering partner for founders, operators, and teams
               turning AI opportunities into shipped product work.
@@ -138,7 +131,7 @@ export default function AboutPage() {
         <section className="about-chapter-two" aria-labelledby="chapter-two-title">
           <div className="about-statement">
             <span aria-hidden="true">02</span>
-            <p>THE SNAB STATEMENT</p>
+            <p>THE SNAB Innovations STATEMENT</p>
             <h2 id="chapter-two-title">
               System First.
               <br />
@@ -148,10 +141,10 @@ export default function AboutPage() {
 
           <div className="about-name-rail" aria-hidden="true">
             <span>*</span>
-            <strong>SNAB INFOTECH</strong>
+            <strong>SNAB Innovations</strong>
             <em>AI PRODUCT STUDIO</em>
             <span>*</span>
-            <strong>SNAB INFOTECH</strong>
+            <strong>SNAB Innovations</strong>
             <em>PRODUCT + ENGINEERING</em>
           </div>
 
@@ -227,7 +220,7 @@ export default function AboutPage() {
 
         <footer className="about-sheet-footer">
           <a href="/">LAST PAGE</a>
-          <span>SNAB INFOTECH / ABOUT US</span>
+          <span>SNAB Innovations / ABOUT US</span>
           <a href="/#services">NEXT PAGE</a>
         </footer>
       </article>
