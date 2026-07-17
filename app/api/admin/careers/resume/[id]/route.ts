@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { ADMIN_COOKIE, isAdminCookie } from "@/lib/admin-auth";
-import { insforge } from "@/lib/insforge";
+import { getInsforge } from "@/lib/insforge";
 
 type ResumePayload = { name: string; type: string; size: number; data: string };
 
@@ -15,7 +15,7 @@ export async function GET(_request: NextRequest, { params }: { params: Promise<{
   if (!secret) return NextResponse.json({ error: "Missing admin configuration." }, { status: 500 });
 
   const { id } = await params;
-  const { data, error } = await insforge.database.rpc("career_admin_get_resume", {
+  const { data, error } = await getInsforge().database.rpc("career_admin_get_resume", {
     p_secret: secret,
     p_application_id: id,
   });
@@ -34,4 +34,3 @@ export async function GET(_request: NextRequest, { params }: { params: Promise<{
     },
   });
 }
-

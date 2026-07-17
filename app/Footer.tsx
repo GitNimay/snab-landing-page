@@ -3,7 +3,7 @@ const footerColumns = [
     { label: "Why SNAB Innovations", href: "/about" },
     { label: "Services", href: "/services" },
     { label: "Projects", href: "/#projects" },
-    { label: "Use Cases", href: "/services" },
+    { label: "Insights", href: "/insights" },
     { label: "Pricing", href: "/contact" },
     { label: "FAQ's", href: "/#faq" }
   ],

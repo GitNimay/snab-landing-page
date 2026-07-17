@@ -33,6 +33,9 @@ export function createPageMetadata({
   noIndex = false,
 }: PageMetadata): Metadata {
   const canonical = absoluteUrl(path);
+  const socialTitle = title.includes(siteConfig.name)
+    ? title
+    : `${title} | ${siteConfig.name}`;
 
   return {
     title,
@@ -43,12 +46,12 @@ export function createPageMetadata({
       locale: "en_IN",
       url: canonical,
       siteName: siteConfig.name,
-      title,
+      title: socialTitle,
       description,
     },
     twitter: {
       card: "summary_large_image",
-      title,
+      title: socialTitle,
       description,
     },
     robots: noIndex
@@ -71,4 +74,3 @@ export function createPageMetadata({
         },
   };
 }
-
