@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { AdminCareersSkeleton } from "./AdminCareersSkeleton";
 import { AlertTriangle, ArrowUpRight, BriefcaseBusiness, CalendarClock, ChevronRight, FileText, LoaderCircle, LogOut, Mail, MapPin, Plus, Search, Trash2, Users, X } from "lucide-react";
 import type { ApplicationStatus, CareerApplication, CareerJob, JobStatus } from "@/lib/careers";
+import { BrandLogo } from "@/app/BrandLogo";
 
 const applicationStatuses: ApplicationStatus[] = ["new", "reviewing", "shortlisted", "interview", "offer", "hired", "rejected", "archived"];
 const blankJob = { title: "", slug: "", department: "", employment_type: "Full-time", work_mode: "Hybrid", location: "", experience_level: "", summary: "", description: "", responsibilities: "", requirements: "", nice_to_have: "", closes_at: "", status: "draft" as JobStatus, featured: false };
@@ -107,7 +108,7 @@ export function AdminCareers() {
 
   return <main className="admin-careers">
     <aside className="admin-sidebar">
-      <a className="admin-brand" href="/careers"><span className="admin-brand-mark" />SNAB</a>
+      <a className="admin-brand" href="/careers"><BrandLogo className="admin-brand-logo" />SNAB</a>
       <p>Hiring desk</p>
       <nav><button className={activeView === "applications" ? "active" : ""} onClick={() => setActiveView("applications")}><Users size={18} />Applications<span>{applications.length}</span></button><button className={activeView === "jobs" ? "active" : ""} onClick={() => setActiveView("jobs")}><BriefcaseBusiness size={18} />Job postings<span>{jobs.length}</span></button></nav>
       <div className="admin-sidebar-bottom"><a href="/careers" target="_blank">View careers site <ArrowUpRight size={15} /></a><button onClick={logout}><LogOut size={15} />Sign out</button></div>

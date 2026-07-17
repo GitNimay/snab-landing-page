@@ -105,12 +105,10 @@
   gap: 14px;
 }
 
-.footer-brand-mark {
-  --mark-size: 48px;
-  --mark-border: 7px;
-  --mark-ring-inset: 8px;
-  --mark-hole-inset: 16px;
-  --mark-core-inset: 19px;
+.footer-brand-logo {
+  width: 54px;
+  height: 54px;
+  flex-basis: 54px;
 }
 
 .footer-brand-name {
@@ -446,12 +444,10 @@
     gap: 13px;
   }
 
-  .footer-brand-mark {
-    --mark-size: 40px;
-    --mark-border: 6px;
-    --mark-ring-inset: 7px;
-    --mark-hole-inset: 14px;
-    --mark-core-inset: 16px;
+  .footer-brand-logo {
+    width: 46px;
+    height: 46px;
+    flex-basis: 46px;
   }
 
   .footer-brand-name {

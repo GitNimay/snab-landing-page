@@ -13,10 +13,13 @@ export default async function OpenGraphImage() {
     join(process.cwd(), "public/seo/pixel-tree-social-bg.png"),
     "base64",
   );
+  const logo = await readFile(join(process.cwd(), "public/logo.png"), "base64");
 
   return new ImageResponse(
-    <SocialPreview backgroundSrc={`data:image/png;base64,${background}`} />,
+    <SocialPreview
+      backgroundSrc={`data:image/png;base64,${background}`}
+      logoSrc={`data:image/png;base64,${logo}`}
+    />,
     size,
   );
 }
-

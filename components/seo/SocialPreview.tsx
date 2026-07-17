@@ -1,5 +1,6 @@
 type SocialPreviewProps = {
   backgroundSrc: string;
+  logoSrc?: string;
   eyebrow?: string;
   title?: string;
   features?: readonly string[];
@@ -7,6 +8,7 @@ type SocialPreviewProps = {
 
 export function SocialPreview({
   backgroundSrc,
+  logoSrc,
   eyebrow = "AI PRODUCT & SOFTWARE ENGINEERING",
   title = "The AI brain behind your business.",
   features = ["AI products", "Workflow automation", "Custom software"],
@@ -55,15 +57,10 @@ export function SocialPreview({
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
-          <div
-            style={{
-              display: "flex",
-              width: "17px",
-              height: "17px",
-              background: "#f05b2b",
-              boxShadow: "8px 8px 0 #efd977",
-            }}
-          />
+          {logoSrc ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={logoSrc} alt="" width="48" height="48" style={{ objectFit: "contain" }} />
+          ) : null}
           <div
             style={{
               display: "flex",
@@ -125,4 +122,3 @@ export function SocialPreview({
     </div>
   );
 }
-

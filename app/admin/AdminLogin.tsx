@@ -2,7 +2,8 @@
 
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
-import { ArrowLeft, ChevronRight, LockKeyhole } from "lucide-react";
+import { ArrowLeft, ChevronRight } from "lucide-react";
+import { BrandLogo } from "../BrandLogo";
 
 export function AdminLogin() {
   const router = useRouter();
@@ -32,7 +33,7 @@ export function AdminLogin() {
     <main className="admin-login">
       <a href="/careers"><ArrowLeft size={16} /> Careers site</a>
       <form onSubmit={login}>
-        <span className="admin-login-icon"><LockKeyhole /></span>
+        <BrandLogo className="admin-login-logo" priority />
         <p>SNAB / Hiring desk</p>
         <h1>Admin access</h1>
         <label>Password<input name="password" type="password" autoFocus required /></label>
