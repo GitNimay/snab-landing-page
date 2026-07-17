@@ -77,13 +77,9 @@ export function Footer() {
           </div>
 
           <div className="footer-media-slot" aria-label="Footer video placeholder">
-            <video
+            <LazyVideo
               className="footer-media-video"
               src="/0DPAI75YDNDMgU2oIZR5R9KDWKA.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
             />
           </div>
 
@@ -97,3 +93,4 @@ export function Footer() {
     </footer>
   );
 }
+import { LazyVideo } from "./LazyVideo";

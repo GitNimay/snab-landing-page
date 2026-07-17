@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { createPageMetadata } from "@/lib/site";
 import { MobileMenu } from "../MobileMenu";
 import "./about.css";
@@ -145,7 +146,7 @@ export default function AboutPage() {
           </div>
 
           <div className="about-tree-frame" aria-hidden="true">
-            <img src="/pixel-tree.svg" alt="" />
+            <Image src="/pixel-tree.svg" alt="" width={1113} height={479} sizes="(max-width: 800px) 100vw, 62vw" />
           </div>
         </section>
 
@@ -224,7 +225,7 @@ export default function AboutPage() {
             {products.map((product) => (
               <article className="about-product" key={product.name}>
                 <div className="about-product-mark">
-                  <img src={product.image} alt={product.imageAlt} />
+                  <Image src={product.image} alt={product.imageAlt} width={320} height={320} sizes="(max-width: 700px) 42vw, 240px" />
                 </div>
                 <div className="about-product-copy">
                   <h2>{product.name}</h2>

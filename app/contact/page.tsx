@@ -3,7 +3,7 @@ import { createPageMetadata } from "@/lib/site";
 import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
 import { Footer } from "../Footer";
 import { MobileMenu } from "../MobileMenu";
-import { ContactMap } from "./ContactMap";
+import { LazyContactMap } from "./LazyContactMap";
 import { ContactForm } from "./ContactForm";
 
 const navItems = [
@@ -122,7 +122,7 @@ export default function ContactPage() {
               <span aria-hidden="true" />
               Nashik / MH / IN
             </div>
-            <ContactMap />
+            <LazyContactMap />
           </div>
         </div>
       </section>

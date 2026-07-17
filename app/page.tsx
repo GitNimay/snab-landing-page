@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { MobileMenu } from "./MobileMenu";
-import { StaggerTestimonials } from "@/components/ui/stagger-testimonials";
 import { FAQSection } from "./FAQSection";
 import { Footer } from "./Footer";
 import { HomeMotion } from "./HomeMotion";
+import { LazyTestimonials } from "./LazyTestimonials";
+import { LazyVideo } from "./LazyVideo";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { homeFaqs } from "@/lib/faqs";
 import { absoluteUrl, createPageMetadata, siteConfig } from "@/lib/site";
@@ -168,11 +170,14 @@ export default function Home() {
                 </div>
               </div>
 
-              <img
+              <Image
                 className="pixel-tree"
                 src="/pixel-tree-wind.svg"
                 alt=""
                 aria-hidden="true"
+                width={1113}
+                height={479}
+                preload
               />
 
               <div className="bottom-rail" aria-hidden="true" />
@@ -228,10 +233,13 @@ export default function Home() {
                     </span>
 
                     <span className="project-media-slot">
-                      <img
+                      <Image
                         className="project-media-image"
                         src={project.image}
                         alt={project.imageAlt}
+                        width={320}
+                        height={320}
+                        sizes="(max-width: 700px) 42vw, 240px"
                       />
                     </span>
                   </a>
@@ -254,13 +262,9 @@ export default function Home() {
               id="contact"
               aria-labelledby="business-growth-title"
             >
-              <video
+              <LazyVideo
                 className="growth-tree-video"
                 src="/tree-growing.mp4"
-                autoPlay
-                loop
-                muted
-                playsInline
               />
               <div className="business-growth-copy">
                 <p className="business-growth-kicker">Growth systems for ambitious teams</p>
@@ -291,7 +295,7 @@ export default function Home() {
                 </p>
               </div>
               <div className="testimonials-carousel">
-                <StaggerTestimonials />
+                <LazyTestimonials />
               </div>
               <div className="bottom-rail" aria-hidden="true" />
             </section>
