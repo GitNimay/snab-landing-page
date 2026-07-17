@@ -2,7 +2,7 @@
 
 import { FormEvent, useRef, useState } from "react";
 import { ArrowRight, Check, FileText, LoaderCircle, Upload, X } from "lucide-react";
-import { insforge } from "@/lib/insforge";
+import { getInsforge } from "@/lib/insforge";
 import type { CareerJob } from "@/lib/careers";
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024;
@@ -100,7 +100,7 @@ export function ApplicationForm({ job }: ApplicationFormProps) {
         consent: formData.get("consent") === "on",
       };
 
-      const { error: insertError } = await insforge.database.rpc("submit_career_application", {
+      const { error: insertError } = await getInsforge().database.rpc("submit_career_application", {
         p_application: application,
         p_resume_base64: resumeBase64,
       });

@@ -6,6 +6,9 @@ import { Footer } from "../../Footer";
 import { getPublishedJobBySlug } from "@/lib/careers";
 import { ApplicationForm } from "../ApplicationForm";
 import { CareersHeader } from "../CareersHeader";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { createJobPostingSchema } from "@/lib/job-schema";
+import { createPageMetadata } from "@/lib/site";
 import "../careers.css";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -18,7 +21,18 @@ function deadlineText(value: string | null) {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const job = await getPublishedJobBySlug(slug);
-  return job ? { title: `${job.title} | Careers at SNAB`, description: job.summary } : { title: "Role not found | SNAB Innovations" };
+  return job
+    ? createPageMetadata({
+        title: `${job.title} — Careers`,
+        description: job.summary,
+        path: `/careers/${job.slug}`,
+      })
+    : createPageMetadata({
+        title: "Role not found",
+        description: "This SNAB Innovations role is no longer available.",
+        path: `/careers/${slug}`,
+        noIndex: true,
+      });
 }
 
 export default async function JobPage({ params }: Props) {
@@ -27,6 +41,7 @@ export default async function JobPage({ params }: Props) {
   if (!job) notFound();
 
   return <main className="careers-page job-page">
+    <JsonLd data={createJobPostingSchema(job)} />
     <CareersHeader />
     <section className="job-hero">
       <Link href="/careers#open-roles" className="job-back"><ArrowLeft size={16} /> All open roles</Link>

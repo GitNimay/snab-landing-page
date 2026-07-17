@@ -4,14 +4,17 @@ import { ArrowRight, ArrowUpRight, CalendarClock, Code2, HeartHandshake, Sparkle
 import { Footer } from "../Footer";
 import { getPublishedJobs } from "@/lib/careers";
 import { CareersHeader } from "./CareersHeader";
+import { createPageMetadata } from "@/lib/site";
 import "./careers.css";
 
 export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = {
-  title: "Careers | SNAB Innovations",
-  description: "Do work that compounds. Explore open roles at SNAB Innovations or introduce yourself for a future opportunity.",
-};
+export const metadata: Metadata = createPageMetadata({
+  title: "Careers in AI & Software Engineering",
+  description:
+    "Explore open AI, product, design, and software engineering roles at SNAB Innovations in Nashik, India.",
+  path: "/careers",
+});
 
 const principles = [
   { icon: Sparkles, number: "01", title: "Make useful things", copy: "We care about ambitious technology, but measure our work by whether it makes someone’s day meaningfully better." },

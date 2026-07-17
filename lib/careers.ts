@@ -1,4 +1,5 @@
-import { insforge } from "./insforge";
+import { unstable_cache } from "next/cache";
+import { getInsforge } from "./insforge";
 
 export type JobStatus = "draft" | "published" | "closed" | "deleted";
 
@@ -68,8 +69,8 @@ export function isCareerJobOpen(job: Pick<CareerJob, "status" | "closes_at">) {
   return job.status === "published" && (!job.closes_at || new Date(job.closes_at).getTime() > Date.now());
 }
 
-export async function getPublishedJobs(): Promise<CareerJob[]> {
-  const { data, error } = await insforge.database
+async function fetchPublishedJobs(): Promise<CareerJob[]> {
+  const { data, error } = await getInsforge().database
     .from("career_jobs")
     .select("*")
     .eq("status", "published")
@@ -83,8 +84,8 @@ export async function getPublishedJobs(): Promise<CareerJob[]> {
   return ((data ?? []) as CareerJob[]).filter(isCareerJobOpen);
 }
 
-export async function getPublishedJobBySlug(slug: string): Promise<CareerJob | null> {
-  const { data, error } = await insforge.database
+async function fetchPublishedJobBySlug(slug: string): Promise<CareerJob | null> {
+  const { data, error } = await getInsforge().database
     .from("career_jobs")
     .select("*")
     .eq("status", "published")
@@ -98,3 +99,13 @@ export async function getPublishedJobBySlug(slug: string): Promise<CareerJob | n
   const job = (data as CareerJob | null) ?? null;
   return job && isCareerJobOpen(job) ? job : null;
 }
+
+export const getPublishedJobs = unstable_cache(fetchPublishedJobs, ["published-career-jobs"], {
+  revalidate: 60,
+  tags: ["career-jobs"],
+});
+
+export const getPublishedJobBySlug = unstable_cache(fetchPublishedJobBySlug, ["published-career-job"], {
+  revalidate: 60,
+  tags: ["career-jobs"],
+});

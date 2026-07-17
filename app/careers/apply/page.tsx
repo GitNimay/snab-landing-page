@@ -4,9 +4,15 @@ import { ArrowLeft } from "lucide-react";
 import { Footer } from "../../Footer";
 import { ApplicationForm } from "../ApplicationForm";
 import { CareersHeader } from "../CareersHeader";
+import { createPageMetadata } from "@/lib/site";
 import "../careers.css";
 
-export const metadata: Metadata = { title: "Open Application | SNAB Innovations", description: "Introduce yourself to the team at SNAB Innovations." };
+export const metadata: Metadata = createPageMetadata({
+  title: "Open Application",
+  description: "Introduce yourself to the team at SNAB Innovations.",
+  path: "/careers/apply",
+  noIndex: true,
+});
 
 export default function GeneralApplicationPage() {
   return <main className="careers-page application-page">
@@ -24,4 +30,3 @@ export default function GeneralApplicationPage() {
     <Footer />
   </main>;
 }
-
