@@ -1,6 +1,6 @@
 import { insforge } from "./insforge";
 
-export type JobStatus = "draft" | "published" | "closed";
+export type JobStatus = "draft" | "published" | "closed" | "deleted";
 
 export type CareerJob = {
   id: string;
@@ -64,6 +64,10 @@ export type CareerApplication = {
   updated_at: string;
 };
 
+export function isCareerJobOpen(job: Pick<CareerJob, "status" | "closes_at">) {
+  return job.status === "published" && (!job.closes_at || new Date(job.closes_at).getTime() > Date.now());
+}
+
 export async function getPublishedJobs(): Promise<CareerJob[]> {
   const { data, error } = await insforge.database
     .from("career_jobs")
@@ -76,7 +80,7 @@ export async function getPublishedJobs(): Promise<CareerJob[]> {
     throw new Error(error.message || "Could not load open roles.");
   }
 
-  return (data ?? []) as CareerJob[];
+  return ((data ?? []) as CareerJob[]).filter(isCareerJobOpen);
 }
 
 export async function getPublishedJobBySlug(slug: string): Promise<CareerJob | null> {
@@ -91,6 +95,6 @@ export async function getPublishedJobBySlug(slug: string): Promise<CareerJob | n
     throw new Error(error.message || "Could not load this role.");
   }
 
-  return (data as CareerJob | null) ?? null;
+  const job = (data as CareerJob | null) ?? null;
+  return job && isCareerJobOpen(job) ? job : null;
 }
-

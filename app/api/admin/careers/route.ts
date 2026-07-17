@@ -51,6 +51,14 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ job: data });
   }
 
+  if (body.action === "delete_job") {
+    const { data, error } = await insforge.database.rpc("career_admin_delete_job", {
+      p_secret: secret,
+      p_job_id: body.jobId,
+    });
+    if (error) return NextResponse.json({ error: error.message }, { status: 400 });
+    return NextResponse.json({ job: data });
+  }
+
   return NextResponse.json({ error: "Unsupported action." }, { status: 400 });
 }
-

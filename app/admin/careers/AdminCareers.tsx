@@ -1,11 +1,12 @@
 "use client";
 
 import { FormEvent, useCallback, useEffect, useMemo, useState } from "react";
-import { ArrowLeft, ArrowUpRight, BriefcaseBusiness, ChevronRight, FileText, LoaderCircle, LockKeyhole, LogOut, Mail, MapPin, Plus, Search, Users, X } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { AlertTriangle, ArrowUpRight, BriefcaseBusiness, CalendarClock, ChevronRight, FileText, LoaderCircle, LogOut, Mail, MapPin, Plus, Search, Trash2, Users, X } from "lucide-react";
 import type { ApplicationStatus, CareerApplication, CareerJob, JobStatus } from "@/lib/careers";
 
 const applicationStatuses: ApplicationStatus[] = ["new", "reviewing", "shortlisted", "interview", "offer", "hired", "rejected", "archived"];
-const blankJob = { title: "", slug: "", department: "", employment_type: "Full-time", work_mode: "Hybrid", location: "", experience_level: "", summary: "", description: "", responsibilities: "", requirements: "", nice_to_have: "", status: "draft" as JobStatus, featured: false };
+const blankJob = { title: "", slug: "", department: "", employment_type: "Full-time", work_mode: "Hybrid", location: "", experience_level: "", summary: "", description: "", responsibilities: "", requirements: "", nice_to_have: "", closes_at: "", status: "draft" as JobStatus, featured: false };
 type JobDraft = typeof blankJob & { id?: string };
 
 function toArray(value: unknown): unknown[] {
@@ -16,8 +17,20 @@ function toArray(value: unknown): unknown[] {
 
 function formatDate(value: string) { return new Intl.DateTimeFormat("en-IN", { day: "2-digit", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" }).format(new Date(value)); }
 function formatSize(bytes: number) { return `${(bytes / 1024 / 1024).toFixed(2)} MB`; }
+function toDateTimeLocal(value: string | null) {
+  if (!value) return "";
+  const date = new Date(value);
+  const local = new Date(date.getTime() - date.getTimezoneOffset() * 60_000);
+  return local.toISOString().slice(0, 16);
+}
+function isExpired(job: CareerJob) { return Boolean(job.closes_at && new Date(job.closes_at).getTime() <= Date.now()); }
+function deadlineLabel(job: CareerJob) {
+  if (!job.closes_at) return "Open until filled";
+  return `${isExpired(job) ? "Expired" : "Closes"} ${formatDate(job.closes_at)}`;
+}
 
 export function AdminCareers() {
+  const router = useRouter();
   const [authenticated, setAuthenticated] = useState<boolean | null>(null);
   const [applications, setApplications] = useState<CareerApplication[]>([]);
   const [jobs, setJobs] = useState<CareerJob[]>([]);
@@ -28,19 +41,20 @@ export function AdminCareers() {
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState<CareerApplication | null>(null);
   const [jobDraft, setJobDraft] = useState<JobDraft | null>(null);
+  const [jobToDelete, setJobToDelete] = useState<CareerJob | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   const loadData = useCallback(async () => {
     setLoading(true); setError("");
     const response = await fetch("/api/admin/careers", { cache: "no-store" });
-    if (response.status === 401) { setAuthenticated(false); setLoading(false); return; }
+    if (response.status === 401) { setLoading(false); router.replace("/admin"); return; }
     const payload = await response.json();
     if (!response.ok) { setError(payload.error || "Could not load careers data."); setAuthenticated(true); setLoading(false); return; }
     setApplications(toArray(payload.applications) as CareerApplication[]);
     setJobs(toArray(payload.jobs) as CareerJob[]);
     setAuthenticated(true); setLoading(false);
-  }, []);
+  }, [router]);
 
   useEffect(() => { void loadData(); }, [loadData]);
 
@@ -52,16 +66,7 @@ export function AdminCareers() {
     return !needle || `${application.first_name} ${application.last_name} ${application.email} ${application.job_title || application.preferred_role || ""}`.toLowerCase().includes(needle);
   }), [applications, jobFilter, query, statusFilter, typeFilter]);
 
-  async function login(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault(); setLoading(true); setError("");
-    const formData = new FormData(event.currentTarget);
-    const response = await fetch("/api/admin/careers/session", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ password: formData.get("password") }) });
-    const payload = await response.json();
-    if (!response.ok) { setError(payload.error || "Could not sign in."); setLoading(false); return; }
-    await loadData();
-  }
-
-  async function logout() { await fetch("/api/admin/careers/session", { method: "DELETE" }); setAuthenticated(false); setApplications([]); setJobs([]); }
+  async function logout() { await fetch("/api/admin/careers/session", { method: "DELETE" }); router.replace("/admin"); }
 
   async function updateStatus(application: CareerApplication, status: ApplicationStatus) {
     setError("");
@@ -72,20 +77,29 @@ export function AdminCareers() {
     setSelected((current) => current?.id === application.id ? { ...current, status } : current);
   }
 
-  function editJob(job: CareerJob) { setJobDraft({ ...job, responsibilities: job.responsibilities.join("\n"), requirements: job.requirements.join("\n"), nice_to_have: job.nice_to_have.join("\n") }); }
+  function editJob(job: CareerJob) { setJobDraft({ ...job, closes_at: toDateTimeLocal(job.closes_at), responsibilities: job.responsibilities.join("\n"), requirements: job.requirements.join("\n"), nice_to_have: job.nice_to_have.join("\n") }); }
 
   async function saveJob(event: FormEvent<HTMLFormElement>) {
     event.preventDefault(); if (!jobDraft) return; setLoading(true); setError("");
     const lines = (value: string) => value.split("\n").map((line) => line.trim()).filter(Boolean);
-    const payloadJob = { ...jobDraft, responsibilities: lines(jobDraft.responsibilities), requirements: lines(jobDraft.requirements), nice_to_have: lines(jobDraft.nice_to_have) };
+    const payloadJob = { ...jobDraft, closes_at: jobDraft.closes_at ? new Date(jobDraft.closes_at).toISOString() : null, responsibilities: lines(jobDraft.responsibilities), requirements: lines(jobDraft.requirements), nice_to_have: lines(jobDraft.nice_to_have) };
     const response = await fetch("/api/admin/careers", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ action: "save_job", job: payloadJob }) });
     const payload = await response.json();
     if (!response.ok) { setError(payload.error || "Could not save job."); setLoading(false); return; }
     setJobDraft(null); await loadData();
   }
 
+  async function deleteJob() {
+    if (!jobToDelete) return;
+    setLoading(true); setError("");
+    const response = await fetch("/api/admin/careers", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ action: "delete_job", jobId: jobToDelete.id }) });
+    const payload = await response.json();
+    if (!response.ok) { setError(payload.error || "Could not delete this posting."); setLoading(false); return; }
+    setJobToDelete(null); await loadData();
+  }
+
   if (authenticated === null || (loading && authenticated === null)) return <div className="admin-loading"><LoaderCircle className="spin" /><span>Opening hiring desk</span></div>;
-  if (!authenticated) return <main className="admin-login"><a href="/careers"><ArrowLeft size={16} /> Careers site</a><form onSubmit={login}><span className="admin-login-icon"><LockKeyhole /></span><p>SNAB / Hiring desk</p><h1>Admin access</h1><label>Password<input name="password" type="password" autoFocus required /></label>{error ? <p className="admin-error">{error}</p> : null}<button disabled={loading}>{loading ? "Checking…" : "Enter dashboard"}<ChevronRight size={18} /></button></form></main>;
+  if (!authenticated) return <div className="admin-loading"><LoaderCircle className="spin" /><span>Redirecting to admin login</span></div>;
 
   const newCount = applications.filter((item) => item.status === "new").length;
   const generalCount = applications.filter((item) => item.application_type === "general").length;
@@ -114,4 +128,3 @@ export function AdminCareers() {
     {jobDraft ? <div className="admin-modal-scrim"><form className="job-editor" onSubmit={saveJob}><header><div><p>Job posting</p><h2>{jobDraft.id ? "Edit role" : "Create role"}</h2></div><button type="button" onClick={() => setJobDraft(null)}><X /></button></header><div className="job-editor-body"><div className="editor-grid"><label>Role title<input value={jobDraft.title} onChange={e => setJobDraft({ ...jobDraft, title: e.target.value })} required /></label><label>URL slug<input value={jobDraft.slug} onChange={e => setJobDraft({ ...jobDraft, slug: e.target.value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") })} required /></label><label>Department<input value={jobDraft.department} onChange={e => setJobDraft({ ...jobDraft, department: e.target.value })} required /></label><label>Experience level<input value={jobDraft.experience_level} onChange={e => setJobDraft({ ...jobDraft, experience_level: e.target.value })} placeholder="e.g. 2–5 years" required /></label><label>Employment type<input value={jobDraft.employment_type} onChange={e => setJobDraft({ ...jobDraft, employment_type: e.target.value })} required /></label><label>Work style<input value={jobDraft.work_mode} onChange={e => setJobDraft({ ...jobDraft, work_mode: e.target.value })} required /></label><label className="editor-full">Location<input value={jobDraft.location} onChange={e => setJobDraft({ ...jobDraft, location: e.target.value })} required /></label><label className="editor-full">Short summary<textarea rows={3} value={jobDraft.summary} onChange={e => setJobDraft({ ...jobDraft, summary: e.target.value })} required /></label><label className="editor-full">Role overview<textarea rows={5} value={jobDraft.description} onChange={e => setJobDraft({ ...jobDraft, description: e.target.value })} required /></label><label className="editor-full">Responsibilities <small>One item per line</small><textarea rows={6} value={jobDraft.responsibilities} onChange={e => setJobDraft({ ...jobDraft, responsibilities: e.target.value })} required /></label><label className="editor-full">Requirements <small>One item per line</small><textarea rows={6} value={jobDraft.requirements} onChange={e => setJobDraft({ ...jobDraft, requirements: e.target.value })} required /></label><label className="editor-full">Nice to have <small>One item per line</small><textarea rows={4} value={jobDraft.nice_to_have} onChange={e => setJobDraft({ ...jobDraft, nice_to_have: e.target.value })} /></label><label>Status<select value={jobDraft.status} onChange={e => setJobDraft({ ...jobDraft, status: e.target.value as JobStatus })}><option value="draft">Draft</option><option value="published">Published</option><option value="closed">Closed</option></select></label><label className="featured-check"><input type="checkbox" checked={jobDraft.featured} onChange={e => setJobDraft({ ...jobDraft, featured: e.target.checked })} />Feature this role</label></div></div><footer><button type="button" onClick={() => setJobDraft(null)}>Cancel</button><button className="admin-primary" disabled={loading}>{loading ? "Saving…" : "Save posting"}</button></footer></form></div> : null}
   </main>;
 }
-
