@@ -1,27 +1,23 @@
 import { BrandLogo } from "./BrandLogo";
 import { LazyVideo } from "./LazyVideo";
+import { siteConfig } from "@/lib/site";
 
 const footerColumns = [
   [
-    { label: "Why SNAB Innovations", href: "/about" },
+    { label: "Home", href: "/" },
+    { label: "About Us", href: "/about" },
+    { label: "Projects", href: "/#projects" }
+  ],
+  [
     { label: "Services", href: "/services" },
-    { label: "Projects", href: "/#projects" },
-    { label: "Insights", href: "/insights" },
-    { label: "Pricing", href: "/contact" },
-    { label: "FAQ's", href: "/#faq" }
+    { label: "Careers", href: "/careers" },
+    { label: "Contact Us", href: "/contact" }
   ],
   [
-    { label: "AI Products", href: "/services" },
-    { label: "Automation", href: "/services" },
-    { label: "Consulting", href: "/contact" }
-  ],
-  [
-    { label: "Privacy Policy", href: "#" },
-    { label: "Terms & Conditions", href: "#" }
+    { label: "Privacy Policy", href: "/privacy" },
+    { label: "Terms & Conditions", href: "/terms" }
   ]
 ];
-
-const capabilityBadges = ["AI", "WEB", "APP"];
 
 export function Footer() {
   return (
@@ -58,21 +54,14 @@ export function Footer() {
             ))}
           </nav>
 
-          <div className="footer-badges" aria-label="Core capabilities">
-            {capabilityBadges.map((badge) => (
-              <span className="footer-badge" key={badge}>
-                {badge}
-              </span>
-            ))}
-          </div>
         </div>
 
         <div className="footer-right">
           <div className="footer-socials" aria-label="Social links">
-            <a className="footer-social footer-social-x" href="#">
+            <a className="footer-social footer-social-x" href={siteConfig.links.twitter} target="_blank" rel="noopener noreferrer">
               X / Twitter <span aria-hidden="true">X</span>
             </a>
-            <a className="footer-social" href="#">
+            <a className="footer-social" href={siteConfig.links.linkedin} target="_blank" rel="noopener noreferrer">
               LinkedIn <span aria-hidden="true">in</span>
             </a>
           </div>

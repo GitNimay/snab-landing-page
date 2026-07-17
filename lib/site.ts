@@ -13,6 +13,10 @@ export const siteConfig = {
     country: "IN",
   },
   email: "info.snabinnovations@gmail.com",
+  links: {
+    twitter: "https://x.com/snabInnovations",
+    linkedin: "https://www.linkedin.com/company/snab-innovations/posts/?feedView=all",
+  },
 } as const;
 
 export function absoluteUrl(path = "/") {
