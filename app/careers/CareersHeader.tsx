@@ -1,4 +1,5 @@
 import { MobileMenu } from "../MobileMenu";
+import { BrandLogo } from "../BrandLogo";
 
 const navItems = [
   { label: "home page", href: "/#home" },
@@ -13,7 +14,7 @@ export function CareersHeader() {
   return (
     <header className="topbar careers-topbar" aria-label="Primary navigation">
       <a className="brand" href="/#home" aria-label="SNAB Innovations home">
-        <span className="brand-mark" aria-hidden="true"><span /></span>
+        <BrandLogo priority />
         <span className="brand-name">SNAB Innovations</span>
       </a>
       <MobileMenu items={navItems} />

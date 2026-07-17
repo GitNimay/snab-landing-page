@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { createPageMetadata } from "@/lib/site";
 import { Footer } from "../Footer";
+import { BrandLogo } from "../BrandLogo";
 import { MobileMenu } from "../MobileMenu";
 import "./services.css";
 
@@ -72,7 +73,7 @@ export default function ServicesPage() {
     <main className="services-page">
       <header className="topbar services-topbar" aria-label="Primary navigation">
         <a className="brand" href="/" aria-label="SNAB Innovations home">
-          <span className="brand-mark" aria-hidden="true"><span /></span>
+          <BrandLogo priority />
           <span className="brand-name">SNAB Innovations</span>
         </a>
         <MobileMenu items={navItems} />

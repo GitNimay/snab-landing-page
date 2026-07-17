@@ -1,3 +1,6 @@
+import { BrandLogo } from "./BrandLogo";
+import { LazyVideo } from "./LazyVideo";
+
 const footerColumns = [
   [
     { label: "Why SNAB Innovations", href: "/about" },
@@ -30,9 +33,7 @@ export function Footer() {
         <div className="footer-left">
           <div className="footer-brand-block">
             <a className="footer-brand" href="/#home" aria-label="SNAB Innovations home">
-              <span className="brand-mark footer-brand-mark" aria-hidden="true">
-                <span />
-              </span>
+              <BrandLogo className="footer-brand-logo" />
               <span id="footer-brand" className="footer-brand-name">
                 SNAB Innovations
               </span>
@@ -93,4 +94,3 @@ export function Footer() {
     </footer>
   );
 }
-import { LazyVideo } from "./LazyVideo";

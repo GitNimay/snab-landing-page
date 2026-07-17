@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { createPageMetadata } from "@/lib/site";
 import { MobileMenu } from "../MobileMenu";
+import { BrandLogo } from "../BrandLogo";
 import "./about.css";
 
 const navItems = [
@@ -122,9 +123,7 @@ export default function AboutPage() {
     <main className="about-page">
       <header className="topbar" aria-label="Primary navigation">
         <a className="brand" href="/" aria-label="SNAB Innovations home">
-          <span className="brand-mark" aria-hidden="true">
-            <span />
-          </span>
+          <BrandLogo priority />
           <span className="brand-name">SNAB Innovations</span>
         </a>
 
@@ -263,9 +262,7 @@ export default function AboutPage() {
 
       <footer className="about-footer">
         <a className="about-brand about-footer-brand" href="/">
-          <span className="brand-mark" aria-hidden="true">
-            <span />
-          </span>
+          <BrandLogo className="about-footer-logo" />
           <span>SNAB Innovations</span>
         </a>
         <p>

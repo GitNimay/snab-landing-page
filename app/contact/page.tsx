@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { createPageMetadata } from "@/lib/site";
 import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
 import { Footer } from "../Footer";
+import { BrandLogo } from "../BrandLogo";
 import { MobileMenu } from "../MobileMenu";
 import { LazyContactMap } from "./LazyContactMap";
 import { ContactForm } from "./ContactForm";
@@ -30,9 +31,7 @@ export default function ContactPage() {
         aria-label="Primary navigation"
       >
         <a className="brand" href="/#home" aria-label="SNAB Innovations home">
-          <span className="brand-mark" aria-hidden="true">
-            <span />
-          </span>
+          <BrandLogo priority />
           <span className="brand-name">SNAB Innovations</span>
         </a>
 

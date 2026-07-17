@@ -2,6 +2,7 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import { BrandLogo } from "./BrandLogo";
 
 type MobileMenuProps = {
   items: {
@@ -91,9 +92,7 @@ export function MobileMenu({ items }: MobileMenuProps) {
                 aria-label="Site navigation"
               >
                 <div className="mobile-menu-head">
-                  <span className="brand-mark" aria-hidden="true">
-                    <span />
-                  </span>
+                  <BrandLogo className="mobile-menu-logo" />
                   <button
                     ref={closeRef}
                     className="menu-close"

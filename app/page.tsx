@@ -7,6 +7,7 @@ import { HomeMotion } from "./HomeMotion";
 import { LazyTestimonials } from "./LazyTestimonials";
 import { LazyVideo } from "./LazyVideo";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { BrandLogo } from "./BrandLogo";
 import { homeFaqs } from "@/lib/faqs";
 import { absoluteUrl, createPageMetadata, siteConfig } from "@/lib/site";
 
@@ -133,9 +134,7 @@ export default function Home() {
       <HomeMotion />
       <header className="topbar" aria-label="Primary navigation">
         <a className="brand" href="#" aria-label="SNAB Innovations home">
-          <span className="brand-mark" aria-hidden="true">
-            <span />
-          </span>
+          <BrandLogo priority />
           <span className="brand-name">SNAB Innovations</span>
         </a>
 

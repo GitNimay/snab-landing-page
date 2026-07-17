@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Footer } from "../Footer";
+import { BrandLogo } from "../BrandLogo";
 import { MobileMenu } from "../MobileMenu";
 
 const navItems = [
@@ -16,9 +17,7 @@ export default function InsightsLayout({ children }: { children: ReactNode }) {
     <main className="insights-site">
       <header className="topbar" aria-label="Primary navigation">
         <a className="brand" href="/" aria-label="SNAB Innovations home">
-          <span className="brand-mark" aria-hidden="true">
-            <span />
-          </span>
+          <BrandLogo priority />
           <span className="brand-name">SNAB Innovations</span>
         </a>
         <MobileMenu items={navItems} />
@@ -28,4 +27,3 @@ export default function InsightsLayout({ children }: { children: ReactNode }) {
     </main>
   );
 }
-
