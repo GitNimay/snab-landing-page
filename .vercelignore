@@ -2,10 +2,9 @@
 .wrangler
 open-next.config.ts
 wrangler.jsonc
-*.log
-0DPAI75YDNDMgU2oIZR5R9KDWKA.mp4
 tree growing video.mp4
 slot1.mp4
 slot2.svg
 slot 3.mp4
 slot4.mp4
+*.log
