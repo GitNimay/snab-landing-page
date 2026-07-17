@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/site";
 import { Footer } from "../Footer";
 import { MobileMenu } from "../MobileMenu";
 import "./services.css";
@@ -55,10 +56,12 @@ const phases = [
   },
 ];
 
-export const metadata: Metadata = {
-  title: "Software Development Services | SNAB Innovations",
-  description: "Explore SNAB Innovations' complete product delivery process: discovery, requirements, strategy, UI/UX, development, QA, cloud deployment, and ongoing support.",
-};
+export const metadata: Metadata = createPageMetadata({
+  title: "AI & Custom Software Development Services",
+  description:
+    "Explore end-to-end AI and custom software development: discovery, product strategy, UI/UX, engineering, QA, cloud deployment, and ongoing support.",
+  path: "/services",
+});
 
 function ArrowIcon() {
   return <svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M11 5l5 5-5 5" /></svg>;

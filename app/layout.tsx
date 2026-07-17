@@ -3,7 +3,9 @@ import { Manrope, Pixelify_Sans, Geist } from "next/font/google";
 import type { ReactNode } from "react";
 import "./globals.css";
 import "./footer.css";
+import "@/components/mdx/mdx.css";
 import { cn } from "@/lib/utils";
+import { siteConfig } from "@/lib/site";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
@@ -20,9 +22,45 @@ const displayFont = Pixelify_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "SNAB Innovations",
-  description:
-    "AI-enabled product development, app development, website development, desktop software, and agent workflow consulting.",
+  metadataBase: new URL(siteConfig.url),
+  applicationName: siteConfig.name,
+  title: {
+    default: "SNAB Innovations | AI Product & Software Engineering",
+    template: "%s | SNAB Innovations",
+  },
+  description: siteConfig.description,
+  authors: [{ name: siteConfig.name, url: siteConfig.url }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
+  category: "technology",
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    locale: "en_IN",
+    url: "/",
+    siteName: siteConfig.name,
+    title: "SNAB Innovations | AI Product & Software Engineering",
+    description: siteConfig.description,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SNAB Innovations | AI Product & Software Engineering",
+    description: siteConfig.description,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  verification: process.env.GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.GOOGLE_SITE_VERIFICATION }
+    : undefined,
   icons: {
     icon: "/favicon.png",
     shortcut: "/favicon.png",

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/site";
 import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
 import { Footer } from "../Footer";
 import { MobileMenu } from "../MobileMenu";
@@ -14,11 +15,12 @@ const navItems = [
   { label: "careers", href: "/careers" }
 ];
 
-export const metadata: Metadata = {
-  title: "Contact Us | SNAB Innovations",
+export const metadata: Metadata = createPageMetadata({
+  title: "Contact Our AI & Software Product Team",
   description:
-    "Contact SNAB Innovations in Nashik to plan an AI product, workflow automation, website, app, or software project.",
-};
+    "Contact SNAB Innovations in Nashik to plan an AI product, workflow automation, website, app, or custom software project.",
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (

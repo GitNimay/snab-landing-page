@@ -1,8 +1,19 @@
+import type { Metadata } from "next";
 import { MobileMenu } from "./MobileMenu";
 import { StaggerTestimonials } from "@/components/ui/stagger-testimonials";
 import { FAQSection } from "./FAQSection";
 import { Footer } from "./Footer";
 import { HomeMotion } from "./HomeMotion";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { homeFaqs } from "@/lib/faqs";
+import { absoluteUrl, createPageMetadata, siteConfig } from "@/lib/site";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "AI Product & Custom Software Development",
+  description:
+    "Build AI products, workflow automation, web platforms, apps, and custom software with SNAB Innovations, an AI product engineering studio in Nashik, India.",
+  path: "/",
+});
 
 const navItems = [
   { label: "home page", href: "#home" },
@@ -53,8 +64,70 @@ const projects = [
 ];
 
 export default function Home() {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": `${siteConfig.url}/#website`,
+        url: siteConfig.url,
+        name: siteConfig.name,
+        alternateName: siteConfig.shortName,
+        inLanguage: "en-IN",
+        publisher: { "@id": `${siteConfig.url}/#organization` },
+      },
+      {
+        "@type": "Organization",
+        "@id": `${siteConfig.url}/#organization`,
+        name: siteConfig.name,
+        url: siteConfig.url,
+        logo: {
+          "@type": "ImageObject",
+          url: absoluteUrl("/logo.png"),
+        },
+        email: siteConfig.email,
+        description: siteConfig.description,
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: siteConfig.location.locality,
+          addressRegion: siteConfig.location.region,
+          postalCode: siteConfig.location.postalCode,
+          addressCountry: siteConfig.location.country,
+        },
+        areaServed: "Worldwide",
+        knowsAbout: [
+          "AI product development",
+          "Workflow automation",
+          "Custom software development",
+          "Web application development",
+          "AI agents",
+          "Retrieval-augmented generation",
+        ],
+        contactPoint: {
+          "@type": "ContactPoint",
+          contactType: "sales",
+          email: siteConfig.email,
+          availableLanguage: ["English", "Hindi", "Marathi"],
+        },
+      },
+      {
+        "@type": "FAQPage",
+        "@id": `${siteConfig.url}/#faq`,
+        mainEntity: homeFaqs.map((faq) => ({
+          "@type": "Question",
+          name: faq.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: faq.answer,
+          },
+        })),
+      },
+    ],
+  };
+
   return (
     <>
+      <JsonLd data={structuredData} />
       <HomeMotion />
       <header className="topbar" aria-label="Primary navigation">
         <a className="brand" href="#" aria-label="SNAB Innovations home">

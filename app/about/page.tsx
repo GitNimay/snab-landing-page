@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/site";
 import { MobileMenu } from "../MobileMenu";
 import "./about.css";
 
@@ -95,11 +96,12 @@ const products = [
   },
 ];
 
-export const metadata: Metadata = {
-  title: "About SNAB Innovations | AI Product & Software Engineering",
+export const metadata: Metadata = createPageMetadata({
+  title: "About Our AI Product Engineering Studio",
   description:
-    "SNAB Innovations is a Pune-based AI product and software engineering studio building dependable products, workflow automation, agents, and connected systems.",
-};
+    "Meet SNAB Innovations, a Nashik-based AI product and software engineering studio building dependable products, workflow automation, agents, and connected systems.",
+  path: "/about",
+});
 
 function ArrowIcon() {
   return (
@@ -136,7 +138,7 @@ export default function AboutPage() {
             </h1>
             <p>
               SNAB Innovations is an AI product and software engineering studio
-              based in Pune, India. We help teams turn complex workflows into
+              based in Nashik, India. We help teams turn complex workflows into
               dependable systems—designed with clarity, built for scale, and
               improved over time.
             </p>
@@ -268,7 +270,7 @@ export default function AboutPage() {
         <p>
           AI product &amp; software engineering studio
           <br />
-          Pune, India
+          Nashik, India
         </p>
         <nav aria-label="Footer navigation">
           <a href="/about">About</a>
