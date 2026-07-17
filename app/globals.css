@@ -169,6 +169,14 @@ a {
   pointer-events: auto;
 }
 
+.brand-logo {
+  display: block;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  object-fit: contain;
+}
+
 .mobile-menu-root {
   display: flex;
   align-items: center;
@@ -319,6 +327,13 @@ a {
   border-left: 2px solid #050505;
   background: var(--orange-hot);
   padding: 0 clamp(22px, 3.6vw, 56px);
+}
+
+.mobile-menu-logo {
+  width: 46px;
+  height: 46px;
+  flex-basis: 46px;
+  filter: drop-shadow(0 3px 8px rgba(0, 47, 96, 0.22));
 }
 
 .mobile-menu-panel .brand-mark::before,
@@ -1827,6 +1842,12 @@ h1 {
 
   .brand-name {
     display: none;
+  }
+
+  .brand-logo {
+    width: 32px;
+    height: 32px;
+    flex-basis: 32px;
   }
 
   .brand-mark {
