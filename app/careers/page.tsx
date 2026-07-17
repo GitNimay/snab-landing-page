@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, Code2, HeartHandshake, Sparkles } from "lucide-react";
+import { ArrowRight, ArrowUpRight, CalendarClock, Code2, HeartHandshake, Sparkles } from "lucide-react";
 import { Footer } from "../Footer";
 import { getPublishedJobs } from "@/lib/careers";
 import { CareersHeader } from "./CareersHeader";
 import "./careers.css";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Careers | SNAB Innovations",
@@ -16,6 +18,11 @@ const principles = [
   { icon: Code2, number: "02", title: "Own the whole problem", copy: "Small teams do their best work when everyone can connect decisions, craft, implementation, and customer impact." },
   { icon: HeartHandshake, number: "03", title: "Be direct and kind", copy: "Clear thinking and honest feedback move work forward. Respect makes that honesty sustainable." },
 ];
+
+function deadlineText(value: string | null) {
+  if (!value) return "Open until filled";
+  return `Apply by ${new Intl.DateTimeFormat("en-IN", { day: "numeric", month: "short", year: "numeric", timeZone: "Asia/Kolkata" }).format(new Date(value))}`;
+}
 
 export default async function CareersPage() {
   const jobs = await getPublishedJobs();
@@ -73,7 +80,7 @@ export default async function CareersPage() {
                 <div className="role-details">
                   <p>{job.department}</p><h3>{job.title}</h3><span>{job.summary}</span>
                 </div>
-                <div className="role-facts"><span>{job.location}</span><span>{job.work_mode}</span><span>{job.employment_type}</span></div>
+                <div className="role-facts"><span>{job.location}</span><span>{job.work_mode}</span><span>{job.employment_type}</span><span className="role-deadline"><CalendarClock size={12} />{deadlineText(job.closes_at)}</span></div>
                 <span className="role-action" aria-hidden="true"><ArrowUpRight size={24} /></span>
               </Link>
             ))}
@@ -103,4 +110,3 @@ export default async function CareersPage() {
     </main>
   );
 }
-
