@@ -3,6 +3,7 @@ import { Manrope, Pixelify_Sans, Geist } from "next/font/google";
 import type { ReactNode } from "react";
 import "./globals.css";
 import "./footer.css";
+import "./skeletons.css";
 import "@/components/mdx/mdx.css";
 import { cn } from "@/lib/utils";
 import { siteConfig } from "@/lib/site";

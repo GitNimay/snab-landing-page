@@ -11,7 +11,7 @@ import { homeFaqs } from "@/lib/faqs";
 import { absoluteUrl, createPageMetadata, siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "AI Product & Custom Software Development",
+  title: "AI Product & Custom Software Development | SNAB Innovations",
   description:
     "Build AI products, workflow automation, web platforms, apps, and custom software with SNAB Innovations, an AI product engineering studio in Nashik, India.",
   path: "/",
