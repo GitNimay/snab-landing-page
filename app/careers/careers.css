@@ -151,3 +151,28 @@
 }
 
 @media (prefers-reduced-motion: reduce) { .careers-marquee { animation: none; }.role-card::before { transition: none; } }
+/* Loading states preserve the final careers layout to avoid visual jumps. */
+.careers-route-skeleton { min-height: 100vh; background: #080808; }
+.careers-skeleton-header { display: flex; align-items: center; justify-content: space-between; }
+.careers-skeleton-brand { width: 210px; height: 38px; }
+.careers-skeleton-menu { width: 96px; height: 38px; }
+.careers-skeleton-kicker { width: 170px; height: 18px; margin-bottom: 24px; }
+.careers-skeleton-heading { width: min(620px, 90vw); height: clamp(58px, 7vw, 92px); margin-bottom: 12px; }
+.careers-skeleton-heading.short { width: min(440px, 66vw); }
+.careers-skeleton-copy { width: min(520px, 78vw); height: 52px; margin: 28px 0; }
+.careers-skeleton-button { width: 170px; height: 50px; }
+.careers-skeleton-section-title { width: min(420px, 72vw); height: 48px; }
+.role-card-skeleton { pointer-events: none; }
+.role-skeleton-index { width: 30px; height: 16px; }
+.role-skeleton-label { width: 110px; height: 12px; margin-bottom: 15px; }
+.role-skeleton-title { width: min(360px, 72vw); height: 31px; margin-bottom: 13px; }
+.role-skeleton-summary { width: min(430px, 76vw); height: 28px; }
+.role-skeleton-fact { width: 92px; height: 13px; }
+.role-skeleton-action { width: 42px; height: 42px; border-radius: 50%; }
+
+@media (max-width: 760px) {
+  .careers-skeleton-header { padding-inline: 22px; }
+  .careers-skeleton-brand { width: 172px; }
+  .role-skeleton-index { display: none; }
+  .role-skeleton-action { width: 36px; height: 36px; }
+}
