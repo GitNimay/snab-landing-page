@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Suspense } from "react";
 import { ArrowRight, ArrowUpRight, CalendarClock, Code2, HeartHandshake, Sparkles } from "lucide-react";
 import { Footer } from "../Footer";
 import { getPublishedJobs } from "@/lib/careers";
 import { CareersHeader } from "./CareersHeader";
+import { RolesSkeleton } from "./RolesSkeleton";
 import { createPageMetadata } from "@/lib/site";
 import "./careers.css";
 
@@ -27,9 +29,49 @@ function deadlineText(value: string | null) {
   return `Apply by ${new Intl.DateTimeFormat("en-IN", { day: "numeric", month: "short", year: "numeric", timeZone: "Asia/Kolkata" }).format(new Date(value))}`;
 }
 
-export default async function CareersPage() {
+async function OpenRoles() {
   const jobs = await getPublishedJobs();
 
+  return (
+    <>
+      <div className="roles-header">
+        <div><p>Current openings</p><h2 id="roles-title">Find your next problem.</h2></div>
+        <span>{String(jobs.length).padStart(2, "0")} open {jobs.length === 1 ? "role" : "roles"}</span>
+      </div>
+
+      {jobs.length ? (
+        <div className="roles-list">
+          {jobs.map((job, index) => (
+            <Link href={`/careers/${job.slug}`} key={job.id} className="role-card">
+              <span className="role-id">{String(index + 1).padStart(2, "0")}</span>
+              <div className="role-details">
+                <p>{job.department}</p><h3>{job.title}</h3><span>{job.summary}</span>
+              </div>
+              <div className="role-facts"><span>{job.location}</span><span>{job.work_mode}</span><span>{job.employment_type}</span><span className="role-deadline"><CalendarClock size={12} />{deadlineText(job.closes_at)}</span></div>
+              <span className="role-action" aria-hidden="true"><ArrowUpRight size={24} /></span>
+            </Link>
+          ))}
+        </div>
+      ) : (
+        <div className="no-openings"><p>There aren&apos;t any published roles today, but good introductions are always welcome.</p></div>
+      )}
+    </>
+  );
+}
+
+function OpenRolesFallback() {
+  return (
+    <>
+      <div className="roles-header">
+        <div><p>Current openings</p><h2 id="roles-title">Find your next problem.</h2></div>
+        <span>Loading roles</span>
+      </div>
+      <RolesSkeleton />
+    </>
+  );
+}
+
+export default function CareersPage() {
   return (
     <main className="careers-page">
       <CareersHeader />
@@ -70,27 +112,9 @@ export default async function CareersPage() {
       </section>
 
       <section className="careers-roles" id="open-roles" aria-labelledby="roles-title">
-        <div className="roles-header">
-          <div><p>Current openings</p><h2 id="roles-title">Find your next problem.</h2></div>
-          <span>{String(jobs.length).padStart(2, "0")} open {jobs.length === 1 ? "role" : "roles"}</span>
-        </div>
-
-        {jobs.length ? (
-          <div className="roles-list">
-            {jobs.map((job, index) => (
-              <Link href={`/careers/${job.slug}`} key={job.id} className="role-card">
-                <span className="role-id">{String(index + 1).padStart(2, "0")}</span>
-                <div className="role-details">
-                  <p>{job.department}</p><h3>{job.title}</h3><span>{job.summary}</span>
-                </div>
-                <div className="role-facts"><span>{job.location}</span><span>{job.work_mode}</span><span>{job.employment_type}</span><span className="role-deadline"><CalendarClock size={12} />{deadlineText(job.closes_at)}</span></div>
-                <span className="role-action" aria-hidden="true"><ArrowUpRight size={24} /></span>
-              </Link>
-            ))}
-          </div>
-        ) : (
-          <div className="no-openings"><p>There aren&apos;t any published roles today, but good introductions are always welcome.</p></div>
-        )}
+        <Suspense fallback={<OpenRolesFallback />}>
+          <OpenRoles />
+        </Suspense>
 
         <div className="general-application">
           <div><p>Nothing with your name on it?</p><h3>Don&apos;t wait for the perfect listing.</h3></div>

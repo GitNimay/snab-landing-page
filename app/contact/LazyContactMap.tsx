@@ -24,6 +24,10 @@ export function LazyContactMap() {
   useEffect(() => {
     const element = ref.current;
     if (!element || visible) return;
+    if (!("IntersectionObserver" in window)) {
+      setVisible(true);
+      return;
+    }
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
         setVisible(true);

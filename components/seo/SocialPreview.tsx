@@ -59,7 +59,7 @@ export function SocialPreview({
         <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
           {logoSrc ? (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={logoSrc} alt="" width="48" height="48" style={{ objectFit: "contain" }} />
+            <img src={logoSrc} alt="" width={48} height={48} style={{ objectFit: "contain" }} />
           ) : null}
           <div
             style={{
