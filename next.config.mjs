@@ -10,6 +10,7 @@ const nextConfig = {
     formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 2678400,
   },
+  serverExternalPackages: ["tailwindcss"],
   experimental: {
     optimizePackageImports: ["lucide-react"],
   },
