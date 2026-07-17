@@ -42,11 +42,20 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     title: "SNAB Innovations | AI Product & Software Engineering",
     description: siteConfig.description,
+    images: [
+      {
+        url: "/seo/pixel-tree-social-bg.png",
+        width: 1200,
+        height: 630,
+        alt: "SNAB Innovations",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "SNAB Innovations | AI Product & Software Engineering",
     description: siteConfig.description,
+    images: ["/seo/pixel-tree-social-bg.png"],
   },
   robots: {
     index: true,
@@ -66,6 +75,9 @@ export const metadata: Metadata = {
     icon: "/favicon.png",
     shortcut: "/favicon.png",
     apple: "/favicon.png",
+  },
+  other: {
+    "llm.txt": "/llm.txt",
   },
 };
 

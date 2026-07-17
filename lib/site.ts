@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const siteConfig = {
   name: "SNAB Innovations",
   shortName: "SNAB",
-  url: process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || "https://snab.ai",
+  url: process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || "https://snab.co.in",
   description:
     "SNAB Innovations designs and engineers AI products, workflow automation, web platforms, apps, and custom software from Nashik, India.",
   location: {
@@ -48,11 +48,20 @@ export function createPageMetadata({
       siteName: siteConfig.name,
       title: socialTitle,
       description,
+      images: [
+        {
+          url: "/seo/pixel-tree-social-bg.png",
+          width: 1200,
+          height: 630,
+          alt: socialTitle,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: socialTitle,
       description,
+      images: ["/seo/pixel-tree-social-bg.png"],
     },
     robots: noIndex
       ? {

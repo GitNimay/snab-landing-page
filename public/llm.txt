@@ -1,0 +1,97 @@
+# SNAB Innovations
+
+> AI product engineering studio based in Nashik, India. We design and build AI products, workflow automation, web platforms, apps, desktop software, and custom internal tools.
+
+## About
+
+SNAB Innovations is an AI product and software engineering studio. We take ideas from discovery to production — building complete products with clean architecture, practical AI integration, and production-grade reliability. We work with teams worldwide from our base in Nashik, Maharashtra, India.
+
+We are model-agnostic and technology-flexible: we select the right stack around each product's requirements rather than defaulting to a single framework or vendor.
+
+### Core Principles
+
+- Start with the workflow, not the model
+- Design for reliability, security, and maintainability
+- Ship in useful increments and improve continuously
+- Take ownership from the first decision to production
+
+## What We Build
+
+- **AI Products**: End-to-end AI product development — from product definition to data, model, interface, and evaluation layers required in production
+- **Workflow Automation**: Connected systems that reduce manual work without losing the rules, reviews, or context that matter
+- **Web Platforms**: Purpose-built web applications with clear interfaces, dependable integrations, and room to grow
+- **Desktop Software**: Focused cross-platform tools for workflows that need local performance, privacy, or device access
+- **AI Agents & Assistants**: Task-oriented systems that act, decide, and hand work back to people at the right moment
+- **RAG Systems**: Retrieval and knowledge layers designed around trusted sources, useful answers, and visible failure modes
+- **Mobile & Cross-Platform Apps**: Native and cross-platform applications for iOS and Android
+
+## Our Products
+
+### Interview Expert
+An AI-enabled platform that helps teams organize interview workflows, reduce administrative work, and turn interview information into structured, actionable records. Capabilities include workflow management, interview assistance, summaries, and evaluation support.
+
+### Notary Expert
+An intelligent workflow platform that helps notary professionals manage documents, appointments, client communication, and case progress more efficiently. Capabilities include client intake, document workflows, appointment coordination, and case tracking.
+
+## Our Process
+
+1. **Discovery & Consultation** — Deep dive into your vision, feasibility evaluation, target user definition, and high-level project goals
+2. **Requirement Analysis** — Technical constraints analysis, functional requirements compilation, user story mapping, and API architecture drafting
+3. **Planning & Strategy** — Database schema mapping, cloud infrastructure selection, milestone outlining, and sprint organization
+4. **UI/UX Design** — Wireframes, interactive user flows, and high-fidelity layouts
+5. **Development** — Clean, scalable code in iterative sprints with regular demonstrations and automated builds
+6. **Testing & QA** — Manual and automated testing for logic, security, API responses, performance, accessibility, and visual compatibility
+7. **Deployment** — Secure, automated delivery into AWS, GCP, or Azure with rollout and rollback strategies
+8. **Maintenance & Support** — Ongoing monitoring, security updates, performance audits, and feature development
+
+## Technology Expertise
+
+- AI/ML: Leading commercial and open models, retrieval-augmented generation (RAG), tool calling, evaluation pipelines, AI agents
+- Frontend: React, Next.js, modern web frameworks
+- Backend: Node.js, APIs, serverless functions
+- Cloud: AWS, GCP, Azure
+- Databases: PostgreSQL, various data stores
+- Languages available: English, Hindi, Marathi
+
+## Pages
+
+- Home: https://snab.co.in
+- About: https://snab.co.in/about
+- Services: https://snab.co.in/services
+- Projects: https://snab.co.in/#projects
+- Insights: https://snab.co.in/insights
+- AI Product Development Guide: https://snab.co.in/insights/ai-product-development
+- Careers: https://snab.co.in/careers
+- Contact: https://snab.co.in/contact
+
+## Contact
+
+- Email: info.snabinnovations@gmail.com
+- Location: Nashik, Maharashtra 422005, India
+- Website: https://snab.co.in
+
+## FAQ
+
+Q: What does SNAB Innovations build?
+A: We design and engineer AI-enabled products, workflow automation, web platforms, mobile and desktop applications, and custom internal software. We can take a new idea from discovery to launch or add dependable AI capabilities to an existing product.
+
+Q: Can you add AI to an existing website, app, or business workflow?
+A: Yes. We first map the current workflow, data sources, integrations, risks, and success criteria. Then we identify where AI is genuinely useful—such as document processing, search, assistance, routing, summarization, or task automation—and integrate it without forcing a full rebuild when one is not needed.
+
+Q: Which AI models and technology stacks do you use?
+A: We are model-agnostic and select technology around the product's requirements. Depending on the use case, that may include leading commercial or open models, retrieval-augmented generation, tool calling, evaluation pipelines, modern web frameworks, APIs, databases, and cloud infrastructure.
+
+Q: How do you keep AI software reliable and secure?
+A: We define permissions, data boundaries, human review points, failure behavior, and measurable evaluations before production. The implementation can include access controls, audit-friendly workflows, model and prompt testing, monitoring, rate limits, and safeguards appropriate to the sensitivity of the system.
+
+Q: How long does a custom software or AI project take?
+A: Timelines depend on scope, integrations, data readiness, and approval cycles. A focused discovery phase establishes the architecture, milestones, and realistic delivery plan. We then ship in useful increments so stakeholders can review working software before the complete release.
+
+Q: How is pricing calculated?
+A: Pricing is based on the agreed scope, system complexity, integrations, delivery stages, and support needs. After discovery, we provide a written proposal that explains the deliverables, assumptions, timeline, and commercial model before development begins.
+
+Q: Who owns the software and intellectual property?
+A: Ownership, licensing, third-party services, and handover terms are documented in the project agreement. For custom engagements, the agreement can provide for transfer of the commissioned source code and project assets after the applicable contractual obligations are complete.
+
+Q: Do you provide support after launch?
+A: Yes. Post-launch work can include monitoring, maintenance, security and dependency updates, model or workflow evaluation, performance improvements, and planned feature development. The support arrangement is matched to the product's operating needs.
