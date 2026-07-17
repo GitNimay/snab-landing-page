@@ -2,6 +2,7 @@
 
 import { FormEvent, useCallback, useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
+import { AdminCareersSkeleton } from "./AdminCareersSkeleton";
 import { AlertTriangle, ArrowUpRight, BriefcaseBusiness, CalendarClock, ChevronRight, FileText, LoaderCircle, LogOut, Mail, MapPin, Plus, Search, Trash2, Users, X } from "lucide-react";
 import type { ApplicationStatus, CareerApplication, CareerJob, JobStatus } from "@/lib/careers";
 
@@ -98,7 +99,7 @@ export function AdminCareers() {
     setJobToDelete(null); await loadData();
   }
 
-  if (authenticated === null || (loading && authenticated === null)) return <div className="admin-loading"><LoaderCircle className="spin" /><span>Opening hiring desk</span></div>;
+  if (authenticated === null || (loading && authenticated === null)) return <AdminCareersSkeleton />;
   if (!authenticated) return <div className="admin-loading"><LoaderCircle className="spin" /><span>Redirecting to admin login</span></div>;
 
   const newCount = applications.filter((item) => item.status === "new").length;
