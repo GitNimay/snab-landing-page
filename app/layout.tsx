@@ -6,7 +6,7 @@ import "./footer.css";
 import "./skeletons.css";
 import "@/components/mdx/mdx.css";
 import { cn } from "@/lib/utils";
-import { siteConfig } from "@/lib/site";
+import { siteConfig, absoluteUrl } from "@/lib/site";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     images: [
       {
-        url: "/seo/pixel-tree-social-bg.png",
+        url: absoluteUrl("/seo/pixel-tree-social-bg.png"),
         width: 1200,
         height: 630,
         alt: "SNAB Innovations",
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "SNAB Innovations | AI Product & Software Engineering",
     description: siteConfig.description,
-    images: ["/seo/pixel-tree-social-bg.png"],
+    images: [absoluteUrl("/seo/pixel-tree-social-bg.png")],
   },
   robots: {
     index: true,

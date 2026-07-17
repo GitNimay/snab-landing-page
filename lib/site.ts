@@ -1,9 +1,25 @@
 import type { Metadata } from "next";
 
+const getBaseUrl = () => {
+  if (process.env.NEXT_PUBLIC_SITE_URL) {
+    return process.env.NEXT_PUBLIC_SITE_URL;
+  }
+  if (process.env.NEXT_PUBLIC_VERCEL_URL) {
+    return `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
+  }
+  if (process.env.VERCEL_URL) {
+    return `https://${process.env.VERCEL_URL}`;
+  }
+  if (process.env.CF_PAGES_URL) {
+    return process.env.CF_PAGES_URL;
+  }
+  return "https://snab.co.in";
+};
+
 export const siteConfig = {
   name: "SNAB Innovations",
   shortName: "SNAB",
-  url: process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || "https://snab.co.in",
+  url: getBaseUrl().replace(/\/$/, ""),
   description:
     "SNAB Innovations designs and engineers AI products, workflow automation, web platforms, apps, and custom software from Nashik, India.",
   location: {
@@ -54,7 +70,7 @@ export function createPageMetadata({
       description,
       images: [
         {
-          url: "/seo/pixel-tree-social-bg.png",
+          url: absoluteUrl("/seo/pixel-tree-social-bg.png"),
           width: 1200,
           height: 630,
           alt: socialTitle,
@@ -65,7 +81,7 @@ export function createPageMetadata({
       card: "summary_large_image",
       title: socialTitle,
       description,
-      images: ["/seo/pixel-tree-social-bg.png"],
+      images: [absoluteUrl("/seo/pixel-tree-social-bg.png")],
     },
     robots: noIndex
       ? {
