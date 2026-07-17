@@ -20,6 +20,15 @@ function cleanFileName(name: string) {
   return name.toLowerCase().replace(/[^a-z0-9._-]+/g, "-").replace(/-+/g, "-");
 }
 
+function fileToBase64(file: File) {
+  return new Promise<string>((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onerror = () => reject(new Error("Your résumé could not be read."));
+    reader.onload = () => resolve(String(reader.result).split(",")[1] || "");
+    reader.readAsDataURL(file);
+  });
+}
+
 export function ApplicationForm({ job }: ApplicationFormProps) {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [file, setFile] = useState<File | null>(null);
@@ -58,19 +67,10 @@ export function ApplicationForm({ job }: ApplicationFormProps) {
     }
 
     setIsSubmitting(true);
-    let uploadedKey = "";
 
     try {
       const applicationId = crypto.randomUUID();
-      const uploadPath = `applications/${applicationId}/${cleanFileName(file.name)}`;
-      const { data: upload, error: uploadError } = await insforge.storage
-        .from("career-resumes")
-        .upload(uploadPath, file);
-
-      if (uploadError || !upload) {
-        throw new Error(uploadError?.message || "Your résumé could not be uploaded.");
-      }
-      uploadedKey = upload.key;
+      const resumeBase64 = await fileToBase64(file);
 
       const optional = (name: string) => {
         const value = String(formData.get(name) || "").trim();
@@ -78,6 +78,7 @@ export function ApplicationForm({ job }: ApplicationFormProps) {
       };
 
       const application = {
+        id: applicationId,
         application_type: job ? "job" : "general",
         job_id: job?.id ?? null,
         first_name: String(formData.get("first_name") || "").trim(),
@@ -93,17 +94,16 @@ export function ApplicationForm({ job }: ApplicationFormProps) {
         notice_period: optional("notice_period"),
         preferred_role: job ? null : String(formData.get("preferred_role") || "").trim(),
         cover_note: String(formData.get("cover_note") || "").trim(),
-        resume_url: upload.url,
-        resume_key: upload.key,
-        resume_name: file.name,
+        resume_name: cleanFileName(file.name),
         resume_size: file.size,
         resume_type: file.type,
         consent: formData.get("consent") === "on",
       };
 
-      const { error: insertError } = await insforge.database
-        .from("career_applications")
-        .insert([application]);
+      const { error: insertError } = await insforge.database.rpc("submit_career_application", {
+        p_application: application,
+        p_resume_base64: resumeBase64,
+      });
 
       if (insertError) throw new Error(insertError.message || "Your application could not be saved.");
 
@@ -111,9 +111,6 @@ export function ApplicationForm({ job }: ApplicationFormProps) {
       setFile(null);
       setSubmitted(true);
     } catch (caught) {
-      if (uploadedKey) {
-        await insforge.storage.from("career-resumes").remove(uploadedKey);
-      }
       setError(caught instanceof Error ? caught.message : "Something went wrong. Please try again.");
     } finally {
       setIsSubmitting(false);
@@ -221,4 +218,3 @@ export function ApplicationForm({ job }: ApplicationFormProps) {
     </form>
   );
 }
-

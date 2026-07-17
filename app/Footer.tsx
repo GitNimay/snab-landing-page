@@ -1,15 +1,15 @@
 const footerColumns = [
   [
     { label: "Why SNAB Innovations", href: "/about" },
-    { label: "Services", href: "/#services" },
+    { label: "Services", href: "/services" },
     { label: "Projects", href: "/#projects" },
-    { label: "Use Cases", href: "/#services" },
+    { label: "Use Cases", href: "/services" },
     { label: "Pricing", href: "/contact" },
     { label: "FAQ's", href: "/#faq" }
   ],
   [
-    { label: "AI Products", href: "/#services" },
-    { label: "Automation", href: "/#services" },
+    { label: "AI Products", href: "/services" },
+    { label: "Automation", href: "/services" },
     { label: "Consulting", href: "/contact" }
   ],
   [

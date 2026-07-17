@@ -36,7 +36,7 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html lang="en" className={cn(bodyFont.variable, displayFont.variable, "font-sans", geist.variable)}>
+    <html lang="en" data-scroll-behavior="smooth" className={cn(bodyFont.variable, displayFont.variable, "font-sans", geist.variable)}>
       <body>{children}</body>
     </html>
   );
