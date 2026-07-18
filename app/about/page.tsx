@@ -8,7 +8,7 @@ import "./about.css";
 const navItems = [
   { label: "home page", href: "/#home" },
   { label: "about us", href: "/about" },
-  { label: "projects", href: "/#projects" },
+  { label: "projects", href: "/projects" },
   { label: "services", href: "/services" },
   { label: "contact us", href: "/contact" },
   { label: "careers", href: "/careers" },
@@ -220,7 +220,7 @@ export default function AboutPage() {
                 <div className="about-product-copy">
                   <h2>{product.name}</h2>
                   <p>{product.description}</p>
-                  <a href="/#projects">
+                  <a href="/projects">
                     View product <ArrowIcon />
                   </a>
                 </div>
@@ -258,7 +258,7 @@ export default function AboutPage() {
         </p>
         <nav aria-label="Footer navigation">
           <a href="/about">About</a>
-          <a href="/#projects">Work</a>
+          <a href="/projects">Work</a>
           <a href="#capabilities">Capabilities</a>
           <a href="#approach">Approach</a>
           <a href="/careers">Careers</a>

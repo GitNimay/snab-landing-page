@@ -10,7 +10,7 @@ import { ContactForm } from "./ContactForm";
 const navItems = [
   { label: "home page", href: "/#home" },
   { label: "about us", href: "/#about" },
-  { label: "projects", href: "/#projects" },
+  { label: "projects", href: "/projects" },
   { label: "services", href: "/services" },
   { label: "contact us", href: "/contact" },
   { label: "careers", href: "/careers" }

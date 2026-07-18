@@ -8,7 +8,7 @@ import "../legal.css";
 const navItems = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
-  { label: "Projects", href: "/#projects" },
+  { label: "Projects", href: "/projects" },
   { label: "Services", href: "/services" },
   { label: "Contact Us", href: "/contact" },
   { label: "Careers", href: "/careers" }
