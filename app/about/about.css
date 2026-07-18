@@ -58,6 +58,7 @@ html:has(.about-page) {
   color: var(--about-orange);
 }
 
+/* HERO SECTION */
 .about-hero {
   display: grid;
   min-height: 600px;
@@ -83,8 +84,8 @@ html:has(.about-page) {
 }
 
 .about-hero h1 span,
-.about-purpose-title h2 span,
-.about-cta h2 span {
+.about-purpose-container h2 span,
+.about-cta-container h2 span {
   color: var(--about-orange);
 }
 
@@ -96,15 +97,13 @@ html:has(.about-page) {
   line-height: 1.52;
 }
 
+/* Option 2: Remove the graph paper background */
 .about-tree-frame {
   display: grid;
   min-width: 0;
   place-items: end center;
   overflow: hidden;
-  background:
-    linear-gradient(var(--about-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--about-line) 1px, transparent 1px);
-  background-size: 72px 72px;
+  background: var(--about-surface);
 }
 
 .about-tree-frame img {
@@ -116,55 +115,33 @@ html:has(.about-page) {
   filter: saturate(1.5) contrast(1.15);
 }
 
+/* SHARED SECTION STYLES for Narrative Flow */
 .about-purpose,
 .about-process,
 .about-capabilities,
 .about-work,
 .about-cta {
-  display: grid;
-  grid-template-columns: minmax(190px, 0.55fr) repeat(3, minmax(0, 1fr));
+  display: flex;
+  flex-direction: column;
   border-bottom: 1px solid var(--about-line);
+  padding: 80px clamp(24px, 5vw, 72px);
 }
 
-.about-section-index {
-  padding: 34px clamp(24px, 4.8vw, 72px);
-}
-
-.about-section-index span {
-  display: block;
+.about-section-kicker {
+  margin: 0 0 20px;
   color: var(--about-orange);
-  font-size: clamp(40px, 4vw, 62px);
-  font-weight: 520;
-  letter-spacing: -0.06em;
-  line-height: 1;
-}
-
-.about-section-index p {
-  margin: 20px 0 0;
-  color: #b7b7b1;
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 800;
   letter-spacing: 0.18em;
   line-height: 1.4;
   text-transform: uppercase;
 }
 
-.about-purpose-title,
-.about-purpose-copy,
-.about-principles,
-.about-process-list,
-.about-capabilities-list,
-.about-products,
-.about-cta-copy,
-.about-cta-link {
-  border-left: 1px solid var(--about-line);
+.about-section-header {
+  margin-bottom: 60px;
 }
 
-.about-purpose-title {
-  padding: 42px 46px 52px;
-}
-
-.about-purpose-title h2 {
+.about-section-header h2 {
   margin: 0;
   font-size: clamp(32px, 3.4vw, 54px);
   font-weight: 660;
@@ -172,16 +149,24 @@ html:has(.about-page) {
   line-height: 1.02;
 }
 
-.about-purpose-copy {
-  display: flex;
-  align-items: center;
-  padding: 42px 46px;
+/* PURPOSE / WHY WE EXIST */
+.about-purpose-container {
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-.about-purpose-copy p {
-  margin: 0;
+.about-purpose-container h2 {
+  margin: 0 0 40px;
+  font-size: clamp(36px, 4vw, 62px);
+  font-weight: 660;
+  letter-spacing: -0.055em;
+  line-height: 1.02;
+}
+
+.about-purpose-lead {
+  margin: 0 0 60px;
   color: var(--about-muted);
-  font-size: 15px;
+  font-size: clamp(18px, 1.5vw, 24px);
   line-height: 1.65;
 }
 
@@ -189,49 +174,34 @@ html:has(.about-page) {
   margin: 0;
   padding: 0;
   list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .about-principles li {
-  position: relative;
-  min-height: 25%;
-  border-bottom: 1px solid var(--about-line);
-  padding: 20px 28px 20px 56px;
   color: #bebeb8;
-  font-size: 13px;
+  font-size: clamp(16px, 1.2vw, 20px);
   line-height: 1.45;
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
-.about-principles li:last-child {
-  border-bottom: 0;
+.about-principles li span {
+  color: var(--about-orange);
+  font-weight: 800;
+  font-size: 14px;
 }
 
-.about-principles li::before {
-  content: "";
-  position: absolute;
-  top: 25px;
-  left: 28px;
-  width: 7px;
-  height: 7px;
-  background: var(--about-orange);
-}
-
+/* PROCESS */
 .about-process-list {
   display: grid;
-  grid-column: 2 / -1;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 40px;
   margin: 0;
   padding: 0;
   list-style: none;
-}
-
-.about-process-list li {
-  min-height: 320px;
-  border-right: 1px solid var(--about-line);
-  padding: 34px 34px 42px;
-}
-
-.about-process-list li:last-child {
-  border-right: 0;
 }
 
 .about-process-list span {
@@ -241,7 +211,7 @@ html:has(.about-page) {
 }
 
 .about-process-list h2 {
-  margin: 62px 0 14px;
+  margin: 24px 0 14px;
   font-size: clamp(22px, 2vw, 32px);
   font-weight: 670;
   letter-spacing: -0.035em;
@@ -250,91 +220,72 @@ html:has(.about-page) {
 .about-process-list p,
 .about-capabilities-list p,
 .about-product-copy p,
-.about-cta-copy p {
+.about-cta-container p {
   margin: 0;
   color: var(--about-muted);
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.58;
 }
 
+/* CAPABILITIES */
 .about-capabilities-list {
   display: grid;
-  grid-column: 2 / -1;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.about-capabilities-list li {
-  position: relative;
-  min-height: 220px;
-  border-right: 1px solid var(--about-line);
-  border-bottom: 1px solid var(--about-line);
-  padding: 34px 34px 38px;
+.capability-card {
+  background: var(--about-surface);
+  border: 1px solid var(--about-line);
+  padding: 40px;
+  border-radius: 12px;
 }
 
-.about-capabilities-list li:nth-child(3n) {
-  border-right: 0;
-}
-
-.about-capabilities-list li:nth-last-child(-n + 3) {
-  border-bottom: 0;
-}
-
-.about-capabilities-list li > span {
-  position: absolute;
-  top: 39px;
-  left: 34px;
-  width: 8px;
-  height: 8px;
-  background: var(--about-orange);
-}
-
-.about-capabilities-list h2 {
-  margin: 0 0 24px;
-  padding-left: 26px;
-  font-size: clamp(18px, 1.55vw, 25px);
+.capability-card h2 {
+  margin: 0 0 16px;
+  font-size: clamp(20px, 1.55vw, 25px);
   font-weight: 660;
   letter-spacing: -0.03em;
   line-height: 1.1;
 }
 
+/* WORK / PRODUCTS */
 .about-products {
   display: grid;
-  grid-column: 2 / -1;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 40px;
 }
 
 .about-product {
-  display: grid;
-  min-height: 330px;
-  grid-template-columns: 180px 1fr;
-  border-right: 1px solid var(--about-line);
-}
-
-.about-product:last-child {
-  border-right: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--about-surface);
+  border: 1px solid var(--about-line);
+  border-radius: 12px;
+  overflow: hidden;
 }
 
 .about-product-mark {
   display: grid;
   place-items: center;
-  border-right: 1px solid var(--about-line);
   background: var(--about-surface);
-  padding: 32px;
+  padding: 40px;
+  border-bottom: 1px solid var(--about-line);
 }
 
 .about-product-mark img {
   display: block;
   width: 100%;
-  max-height: 150px;
+  max-height: 180px;
   object-fit: contain;
 }
 
 .about-product-copy {
   display: flex;
-  min-width: 0;
+  flex: 1;
   flex-direction: column;
   padding: 42px 38px;
 }
@@ -351,9 +302,9 @@ html:has(.about-page) {
   width: max-content;
   align-items: center;
   gap: 10px;
-  margin-top: auto;
+  margin-top: 32px;
   color: var(--about-orange);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -371,17 +322,19 @@ html:has(.about-page) {
   stroke-linejoin: miter;
 }
 
-.about-cta-copy {
-  display: grid;
-  grid-column: 2 / 4;
-  grid-template-columns: minmax(0, 1.4fr) minmax(240px, 0.6fr);
-  align-items: center;
-  gap: 52px;
-  padding: 48px;
+/* CTA */
+.about-cta-container {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
 }
 
-.about-cta-copy h2 {
-  margin: 0;
+.about-cta-container .about-section-kicker {
+  justify-content: center;
+}
+
+.about-cta-container h2 {
+  margin: 0 0 24px;
   font-size: clamp(36px, 4.2vw, 68px);
   font-weight: 680;
   letter-spacing: -0.06em;
@@ -389,19 +342,19 @@ html:has(.about-page) {
 }
 
 .about-cta-link {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 18px;
-  margin: 48px;
+  margin-top: 48px;
   border: 1px solid var(--about-orange);
-  padding: 18px;
+  padding: 18px 48px;
   color: var(--about-text);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 800;
   letter-spacing: 0.12em;
-  text-align: center;
   text-transform: uppercase;
+  border-radius: 6px;
 }
 
 .about-cta-link:hover {
@@ -409,6 +362,7 @@ html:has(.about-page) {
   color: #000;
 }
 
+/* FOOTER */
 .about-footer {
   display: grid;
   min-height: 150px;
@@ -451,85 +405,6 @@ html:has(.about-page) {
   .about-hero {
     min-height: 560px;
     grid-template-columns: minmax(0, 1.15fr) minmax(360px, 0.85fr);
-  }
-
-  .about-purpose,
-  .about-process,
-  .about-capabilities,
-  .about-work,
-  .about-cta {
-    grid-template-columns: 190px repeat(2, minmax(0, 1fr));
-  }
-
-  .about-purpose-title {
-    grid-column: 2 / -1;
-  }
-
-  .about-purpose-copy {
-    grid-column: 2;
-    border-top: 1px solid var(--about-line);
-  }
-
-  .about-principles {
-    grid-column: 3;
-    border-top: 1px solid var(--about-line);
-  }
-
-  .about-process-list,
-  .about-capabilities-list,
-  .about-products {
-    grid-column: 2 / -1;
-  }
-
-  .about-process-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .about-process-list li:nth-child(2) {
-    border-right: 0;
-  }
-
-  .about-process-list li:nth-child(-n + 2) {
-    border-bottom: 1px solid var(--about-line);
-  }
-
-  .about-capabilities-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .about-capabilities-list li:nth-child(3n) {
-    border-right: 1px solid var(--about-line);
-  }
-
-  .about-capabilities-list li:nth-child(2n) {
-    border-right: 0;
-  }
-
-  .about-capabilities-list li:nth-last-child(3) {
-    border-bottom: 1px solid var(--about-line);
-  }
-
-  .about-products {
-    grid-template-columns: 1fr;
-  }
-
-  .about-product {
-    border-right: 0;
-    border-bottom: 1px solid var(--about-line);
-  }
-
-  .about-product:last-child {
-    border-bottom: 0;
-  }
-
-  .about-cta-copy {
-    grid-column: 2 / -1;
-  }
-
-  .about-cta-link {
-    grid-column: 2 / -1;
-    border-left: 1px solid var(--about-orange);
-    margin-top: 0;
   }
 
   .about-footer {
@@ -580,7 +455,6 @@ html:has(.about-page) {
 
   .about-tree-frame {
     min-height: 320px;
-    background-size: 48px 48px;
   }
 
   .about-tree-frame img {
@@ -593,97 +467,24 @@ html:has(.about-page) {
   .about-capabilities,
   .about-work,
   .about-cta {
-    display: block;
+    padding: 60px 24px;
   }
 
-  .about-section-index {
-    display: flex;
-    align-items: center;
-    gap: 26px;
-    border-bottom: 1px solid var(--about-line);
-    padding: 26px 22px;
+  .about-cta-container {
+    text-align: left;
   }
 
-  .about-section-index span {
-    font-size: 42px;
-  }
-
-  .about-section-index p {
-    margin: 0;
-  }
-
-  .about-purpose-title,
-  .about-purpose-copy,
-  .about-principles,
-  .about-process-list,
-  .about-capabilities-list,
-  .about-products,
-  .about-cta-copy,
   .about-cta-link {
-    border-left: 0;
+    width: 100%;
+    justify-content: center;
   }
 
-  .about-purpose-title,
-  .about-purpose-copy {
-    padding: 38px 22px;
-  }
-
-  .about-purpose-title h2 {
-    font-size: 39px;
-  }
-
-  .about-principles {
-    border-top: 1px solid var(--about-line);
-  }
-
-  .about-principles li {
-    padding: 22px 22px 22px 50px;
-  }
-
-  .about-principles li::before {
-    left: 22px;
-  }
-
-  .about-process-list,
-  .about-capabilities-list,
   .about-products {
-    display: block;
-  }
-
-  .about-process-list li,
-  .about-capabilities-list li {
-    min-height: 0;
-    border-right: 0 !important;
-    border-bottom: 1px solid var(--about-line) !important;
-    padding: 32px 22px 38px;
-  }
-
-  .about-process-list li:last-child,
-  .about-capabilities-list li:last-child {
-    border-bottom: 0 !important;
-  }
-
-  .about-process-list h2 {
-    margin-top: 44px;
-  }
-
-  .about-capabilities-list li > span {
-    top: 36px;
-    left: 22px;
-  }
-
-  .about-capabilities-list h2 {
-    margin-bottom: 18px;
-  }
-
-  .about-product {
-    display: block;
+    grid-template-columns: 1fr;
   }
 
   .about-product-mark {
     min-height: 220px;
-    border-right: 0;
-    border-bottom: 1px solid var(--about-line);
   }
 
   .about-product-mark img {
@@ -693,23 +494,6 @@ html:has(.about-page) {
   .about-product-copy {
     min-height: 270px;
     padding: 34px 22px;
-  }
-
-  .about-cta-copy {
-    display: block;
-    padding: 44px 22px;
-  }
-
-  .about-cta-copy h2 {
-    font-size: 45px;
-  }
-
-  .about-cta-copy p {
-    margin-top: 30px;
-  }
-
-  .about-cta-link {
-    margin: 0 22px 44px;
   }
 
   .about-footer {

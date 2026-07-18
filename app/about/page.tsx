@@ -150,36 +150,28 @@ export default function AboutPage() {
         </section>
 
         <section className="about-purpose" aria-labelledby="purpose-title">
-          <div className="about-section-index">
-            <span>01</span>
-            <p>Why we exist</p>
-          </div>
-
-          <div className="about-purpose-title">
+          <div className="about-purpose-container">
+            <p className="about-section-kicker">Why we exist</p>
             <h2 id="purpose-title">
               Closing the gap between AI demos and dependable products<span>.</span>
             </h2>
-          </div>
-
-          <div className="about-purpose-copy">
-            <p>
+            <p className="about-purpose-lead">
               AI has moved fast. Product outcomes have not always kept pace. We
               bring product thinking, engineering discipline, and domain context
               together to build systems that work in the real world.
             </p>
+            <ul className="about-principles" aria-label="Our product principles">
+              {principles.map((principle, idx) => (
+                <li key={principle}><span>0{idx + 1}</span> {principle}</li>
+              ))}
+            </ul>
           </div>
-
-          <ul className="about-principles" aria-label="Our product principles">
-            {principles.map((principle) => (
-              <li key={principle}>{principle}</li>
-            ))}
-          </ul>
         </section>
 
         <section className="about-process" id="approach" aria-labelledby="process-title">
-          <div className="about-section-index">
-            <span>02</span>
-            <p id="process-title">How we work</p>
+          <div className="about-section-header">
+            <p className="about-section-kicker">How we work</p>
+            <h2 id="process-title">The engineering process.</h2>
           </div>
 
           <ol className="about-process-list">
@@ -198,15 +190,14 @@ export default function AboutPage() {
           id="capabilities"
           aria-labelledby="capabilities-title"
         >
-          <div className="about-section-index">
-            <span>03</span>
-            <p id="capabilities-title">What we build</p>
+          <div className="about-section-header">
+            <p className="about-section-kicker">What we build</p>
+            <h2 id="capabilities-title">Capabilities.</h2>
           </div>
 
           <ul className="about-capabilities-list">
             {capabilities.map((capability) => (
-              <li key={capability.title}>
-                <span aria-hidden="true" />
+              <li key={capability.title} className="capability-card">
                 <h2>{capability.title}</h2>
                 <p>{capability.description}</p>
               </li>
@@ -215,9 +206,9 @@ export default function AboutPage() {
         </section>
 
         <section className="about-work" aria-labelledby="work-title">
-          <div className="about-section-index">
-            <span>04</span>
-            <p id="work-title">Selected product work</p>
+          <div className="about-section-header">
+            <p className="about-section-kicker">Selected product work</p>
+            <h2 id="work-title">What we've shipped.</h2>
           </div>
 
           <div className="about-products">
@@ -239,12 +230,8 @@ export default function AboutPage() {
         </section>
 
         <section className="about-cta" aria-labelledby="about-cta-title">
-          <div className="about-section-index">
-            <span>05</span>
-            <p>Let&apos;s build what matters</p>
-          </div>
-
-          <div className="about-cta-copy">
+          <div className="about-cta-container">
+            <p className="about-section-kicker">Let's build what matters</p>
             <h2 id="about-cta-title">
               Bring us the workflow that should work better<span>.</span>
             </h2>
@@ -252,11 +239,10 @@ export default function AboutPage() {
               Whether you are starting from an idea or improving an existing
               product, we can help shape the system and build it properly.
             </p>
+            <a className="about-cta-link" href="/contact">
+              Start a conversation <ArrowIcon />
+            </a>
           </div>
-
-          <a className="about-cta-link" href="/contact">
-            Start a conversation <ArrowIcon />
-          </a>
         </section>
       </article>
 

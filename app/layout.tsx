@@ -8,7 +8,7 @@ import "@/components/mdx/mdx.css";
 import { cn } from "@/lib/utils";
 import { siteConfig, absoluteUrl } from "@/lib/site";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+const geist = Geist({ subsets: ['latin'], variable: '--font-sans' });
 
 const bodyFont = Manrope({
   subsets: ["latin"],
