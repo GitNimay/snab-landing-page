@@ -62,7 +62,7 @@ const projects = [
 export default function ProjectsPage() {
   return (
     <main className="projects-page">
-      <header className="topbar" aria-label="Primary navigation">
+      <header className="topbar projects-topbar" aria-label="Primary navigation">
         <a className="brand" href="/" aria-label="SNAB Innovations home">
           <BrandLogo priority />
           <span className="brand-name">SNAB Innovations</span>

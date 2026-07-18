@@ -11,7 +11,7 @@
 }
 
 .services-page a:focus-visible { outline: 2px solid var(--services-orange); outline-offset: 5px; }
-.services-topbar { background: linear-gradient(180deg, rgba(5,5,5,.96), rgba(5,5,5,0)); }
+
 
 .services-hero {
   position: relative;
