@@ -184,8 +184,9 @@
 
 .project-visual {
   position: relative;
-  width: 100%;
-  aspect-ratio: 1;
+  width: 80%;
+  margin: 0 auto;
+  aspect-ratio: 4/3;
   background: var(--proj-surface);
   border: 1px solid var(--proj-line);
   border-radius: 24px;
@@ -204,11 +205,11 @@
 }
 
 .project-visual img {
-  width: 100%;
-  height: auto;
-  max-height: 80%;
+  width: 80%;
+  height: 80%;
   object-fit: contain;
-  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.5));
+  object-position: center;
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
 }
 
 @media (max-width: 900px) {
